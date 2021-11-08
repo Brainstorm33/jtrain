@@ -1,0 +1,63 @@
+.ant1, .ant2, .ant3, .ant4, .ant5, .ant6, .ant7, .ant8, .ant9, .sg-anim {
+  -webkit-transform: translate3d(0, 30px, 0);
+  transform: translate3d(0, 30px, 0);
+  opacity: 0;
+  transition: all 1s ease;
+}
+
+.ant-img {
+  opacity: 0;
+  transition: all 1s ease;
+}
+
+.animated {
+  &.ant1, .ant1, &.ant2, .ant2, &.ant3, .ant3, &.ant4, .ant4, &.ant5, .ant5, &.ant6, .ant6, &.ant7, .ant7, &.ant8, .ant8, &.ant9, .ant9 {
+	transition: all 1s ease;
+	-webkit-transform: translateZ(0);
+	transform: translateZ(0);
+	opacity: 1;
+  }
+  &.sg-anim {
+	-webkit-transform: none;
+	transform: none;
+	opacity: 1;
+  }
+  .ant-img {
+	opacity: 1;
+  }
+  &.ant1.short-ant, .ant1.short-ant, &.ant2.short-ant, .ant2.short-ant, &.ant3.short-ant, .ant3.short-ant, &.ant4.short-ant, .ant4.short-ant, &.ant5.short-ant, .ant5.short-ant, &.ant6.short-ant, .ant6.short-ant, &.ant7.short-ant, .ant7.short-ant, &.ant8.short-ant, .ant8.short-ant, &.ant1.short-ant, .ant1.short-ant, &.ant2.short-ant, .ant2.short-ant, &.ant3.short-ant, .ant3.short-ant, &.ant4.short-ant, .ant4.short-ant, &.ant5.short-ant, .ant5.short-ant, &.ant6.short-ant, .ant6.short-ant, &.ant7.short-ant, .ant7.short-ant, &.ant8.short-ant, .ant8.short-ant, &.ant9.short-ant, .ant9.short-ant {
+	transition: all 0.5s ease;
+  }
+  &.ant1, .ant1 {
+	transition-delay: 0s;
+  }
+  &.ant2, .ant2 {
+	transition-delay: 0.2s;
+  }
+  &.ant3, .ant3, .ant-img {
+	transition-delay: 0.4s;
+  }
+  &.ant4, .ant4 {
+	transition-delay: 0.6s;
+  }
+  &.ant5, .ant5 {
+	transition-delay: 0.8s;
+  }
+  &.ant6, .ant6 {
+	transition-delay: 1s;
+  }
+  &.ant7, .ant7 {
+	transition-delay: 1.2s;
+  }
+  &.ant8, .ant8 {
+	transition-delay: 1.4s;
+  }
+  &.ant9, .ant9 {
+	transition-delay: 1.6s;
+  }
+  &.ant-bottom {
+	transition: all 1s ease;
+	-webkit-transform: translateZ(0);
+	transform: translateZ(0);
+  }
+}

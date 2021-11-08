@@ -1,0 +1,41 @@
+
+@font-face {
+  font-family: 'Monument Extended';
+  src: local('Monument Extended Ultralight'), local('MonumentExtended-Ultralight'),
+  url('../../fonts/MonumentExtended-Ultralight.woff2') format('woff2'),
+  url('../../fonts/MonumentExtended-Ultralight.woff') format('woff');
+  font-weight: 200;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Bebas Kai';
+  src: local('Bebas Kai'), local('BebasKai'),
+  url('../../fonts/BebasKai.woff2') format('woff2'),
+  url('../../fonts/BebasKai.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Cambon';
+  src: local('Cambon Medium'), local('Cambon-Medium'),
+  url('../../fonts/Cambon-Medium.woff2') format('woff2'),
+  url('../../fonts/Cambon-Medium.woff') format('woff');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Cambon';
+  src: local('Cambon Light'), local('Cambon-Light'),
+  url('../../fonts/Cambon-Light.woff2') format('woff2'),
+  url('../../fonts/Cambon-Light.woff') format('woff');
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+

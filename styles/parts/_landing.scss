@@ -1,0 +1,873 @@
+@mixin res-font($mobSize, $pcSize) {
+  $max-resolution: 1920;
+  $min-resolution: 370;
+  $mobSizeDeff: $pcSize - $mobSize;
+
+  font-size: calc(
+    #{$mobSize + px} + #{$mobSizeDeff} *
+      (
+        (100vw - #{$min-resolution + px}) /
+          (#{$max-resolution} - #{$min-resolution})
+      )
+  );
+}
+html {
+  scroll-behavior: smooth;
+}
+
+// -----------------------------------
+//body.light-theme {
+//  color: #000;
+//  background-color: #fff;
+//  scroll-behavior: smooth;
+//
+//  #header {
+//    position: relative;
+//  }
+//  main {
+//    .services-top-menu {
+//      overflow: hidden;
+//      ul.services-top-menu-swiper-wrap {
+//        li {
+//          a {
+//            color: #959595;
+//
+//            @include res-font(15, 22);
+//            line-height: 12px;
+//          }
+//        }
+//        .swiper-slide {
+//        }
+//
+//        li.swiper-slide-active {
+//          a {
+//            color: #000;
+//          }
+//        }
+//      }
+//    }
+//    .box-bordered {
+//      position: absolute;
+//      border: 1px solid #dfdfdf;
+//      height: 70vh;
+//      width: 60vw;
+//      top: -25px;
+//      left: 0;
+//      right: 0;
+//      margin-left: auto;
+//      margin-right: auto;
+//      z-index: -1;
+//    }
+//    .services-top-section {
+//      max-width: 1630px;
+//      padding-top: 43px;
+//      width: 100%;
+//      margin: auto 0 auto auto;
+//      padding-right: 0;
+//      display: flex;
+//      flex-direction: row;
+//      padding-bottom: 120px;
+//      .left-side {
+//        flex-basis: 40%;
+//        padding-right: 40px;
+//
+//        h1.title {
+//          color: #0057ff;
+//          font-weight: 400;
+//          font-size: 64px;
+//          line-height: 73.2px;
+//          padding: 20px 0;
+//          font-family: Monument Extended;
+//        }
+//        .short-description {
+//          color: #060606;
+//          font-weight: 200;
+//          font-size: 16px;
+//          font-size: calc(14px + 2 * ((100vw - 320px) / (1630 - 320)));
+//        }
+//
+//        .be-mamber-button {
+//          color: #0057ff;
+//          font-family: "Cambon";
+//          text-transform: uppercase;
+//          @include res-font(15, 20);
+//          letter-spacing: 15px;
+//          margin-top: 32px;
+//          display: inline-block;
+//          border-bottom: 1px solid #0057ff;
+//          padding: 0 10px 10px 0;
+//          background: url("../../images/blue-arrow.svg");
+//          background-repeat: no-repeat;
+//          background-position: right 32%;
+//        }
+//      }
+//    }
+//    .right-side {
+//      flex-basis: 60%;
+//      position: relative;
+//      a.video-icon {
+//        display: block;
+//        position: absolute;
+//        top: 0;
+//        bottom: 0;
+//        right: 0;
+//        left: 0;
+//        margin: auto;
+//        width: 88px;
+//        height: 88px;
+//        font-size: 0;
+//        -webkit-transform: translate3d(0, 0, 0);
+//        -ms-transform: translate3d(0, 0, 0);
+//        transform: translate3d(0, 0, 0);
+//      }
+//    }
+//    .content {
+//      display: flex;
+//      flex-direction: row;
+//      div {
+//        flex-basis: 50%;
+//        padding: 0 120px;
+//        h2 {
+//          font-size: 22px;
+//          padding-bottom: 25px;
+//        }
+//        p {
+//          font-size: 16p;
+//        }
+//      }
+//    }
+//  }
+//  .box-bordered-contact {
+//    position: absolute;
+//    border: 1px solid #dfdfdf;
+//    height: 760px;
+//    width: 67vw;
+//    bottom: 0;
+//    left: 0;
+//    right: 0;
+//    margin-left: auto;
+//    margin-right: auto;
+//    z-index: -1;
+//  }
+//
+//  .contact {
+//    display: flex;
+//    flex-direction: row;
+//    margin-top: 180px;
+//    margin-right: 0;
+//    padding-right: 0;
+//
+//    .left-side {
+//      flex-basis: 40%;
+//      padding: 50px 180px 0 0;
+//
+//      h2.title {
+//        color: #0057ff;
+//        font-weight: 400;
+//        line-height: 73.2px;
+//        font: 40px "Monument Extended";
+//        padding-bottom: 23px;
+//      }
+//      .description {
+//        font: 16px "Cambon";
+//        color: #060606;
+//        line-height: 23px;
+//        font-weight: 200;
+//      }
+//      .form-wrap {
+//        max-width: 440px;
+//
+//        form {
+//          width: 100%;
+//          margin-bottom: 20px;
+//          input {
+//            width: 100%;
+//            border: none;
+//            border-bottom: 1px solid #060606;
+//            padding: 13px 0;
+//            color: #000;
+//            font: 16px "Cambon";
+//            font-weight: 200;
+//            margin-top: 20px;
+//          }
+//          input::placeholder {
+//            color: #060606;
+//            font: 16px "Cambon";
+//            font-weight: 200;
+//          }
+//          select {
+//            width: 100%;
+//            border: none;
+//            border-bottom: 1px solid #060606;
+//            padding: 13px 0;
+//            color: #000;
+//            font: 16px "Cambon";
+//            font-weight: 200;
+//            margin-top: 20px;
+//          }
+//          label {
+//            margin-top: 60px;
+//            display: inline-block;
+//            width: 100%;
+//          }
+//          textarea {
+//            width: 100%;
+//            border: none;
+//            border-bottom: 1px solid #060606;
+//            padding: 13px 0;
+//            color: #000;
+//            font: 16px "Cambon";
+//            font-weight: 200;
+//            height: 100px;
+//          }
+//          input[type="submit"] {
+//            width: auto;
+//            padding: 12px 37px 12px 50px;
+//            display: inline-block;
+//            background-color: #0057ff;
+//            font: 20px Cambon;
+//            color: #fff;
+//            text-transform: uppercase;
+//            letter-spacing: 13px;
+//            font-weight: 400;
+//          }
+//        }
+//      }
+//    }
+//    .right-side {
+//      flex-basis: 60%;
+//      .meta {
+//        text-align: center;
+//        position: absolute;
+//        z-index: 5;
+//        color: #fff;
+//        z-index: 3;
+//        max-width: 630px;
+//        width: 100%;
+//        padding: 0 20px;
+//        top: 70px;
+//        left: 50px;
+//
+//        .address {
+//          font-size: 40px;
+//          color: #fff;
+//          font-family: Monument Extended;
+//        }
+//        .socials {
+//          a {
+//            padding-right: 10px;
+//          }
+//        }
+//        .tel {
+//        }
+//      }
+//
+//      #googlemap {
+//        height: 100%;
+//      }
+//    }
+//  }
+//  .footer {
+//    padding: 110px 190px;
+//    text-align: right;
+//
+//    p {
+//      a {
+//        text-decoration: underline;
+//      }
+//    }
+//  }
+//}
+//
+//@media screen and(max-width: 1280px) {
+//  body.light-theme {
+//    main {
+//      h1.title {
+//        display: none;
+//      }
+//      .services-top-menu {
+//        ul {
+//          li.swiper-slide-active {
+//            a {
+//              color: #0057ff !important;
+//              font-size: 20px;
+//              font-family: "Monument Extended";
+//            }
+//          }
+//        }
+//      }
+//      .box-bordered {
+//        width: 70%;
+//        top: -107px;
+//        margin: 0 auto;
+//      }
+//      .services-top-section {
+//        flex-direction: column-reverse;
+//        padding: 0 32px 32px;
+//        .left-side {
+//          .short-description {
+//            margin-top: 32px;
+//          }
+//          .be-mamber-button {
+//            letter-spacing: 5px;
+//          }
+//        }
+//        .video {
+//          margin-top: 20px;
+//          margin-left: -32px;
+//          margin-right: -32px;
+//        }
+//      }
+//
+//      .content {
+//        flex-direction: column;
+//        div {
+//          padding: 32px;
+//        }
+//      }
+//      .contact {
+//        margin-top: 250px;
+//        flex-direction: column-reverse;
+//
+//        padding: 0;
+//        .left-side {
+//          flex-basis: 100%;
+//          padding: 20px 27px;
+//          .title {
+//            font-size: 20px;
+//            color: #000;
+//          }
+//          .form-wrap {
+//            max-width: none;
+//            width: 100%;
+//            form {
+//              input[type="submit"] {
+//                margin: 0 auto;
+//              }
+//              .ajax-loader {
+//                display: block;
+//              }
+//            }
+//          }
+//        }
+//        .right-side {
+//          flex-basis: 100%;
+//          height: 300px;
+//          min-height: 300px;
+//          .meta {
+//            max-width: 100%;
+//            width: 100%;
+//            text-align: center;
+//            position: absolute;
+//            top: -95px;
+//            left: 0;
+//            z-index: 5;
+//
+//            .address {
+//              color: #000;
+//              font-size: 24px;
+//            }
+//
+//            .social {
+//            }
+//            .tel {
+//            }
+//          }
+//        }
+//      }
+//      .footer {
+//        padding: 32px;
+//        text-align: center;
+//      }
+//      .box-bordered-contact {
+//        width: calc(100% - 40px);
+//
+//        border-color: #343434;
+//      }
+//    }
+//  }
+//}
+
+.tax-team {
+  @include res-font(14,16);
+  .hero-section {
+    height:auto;
+    .rectangle {
+      width: calc(100% - 134px);
+      height:265px;
+      margin:0 auto;
+      top:0;
+    }
+    .inner-holder{
+      width: 87%;
+      padding:calc(var(--hh) - 20px) 25px 50px;
+    }
+
+    .person-top-wrap {
+      display: flex;
+      align-items: center;
+      flex-wrap:wrap;
+      max-width:1242px;
+      padding-top: 70px;
+      margin:0 auto;
+      >div:nth-child(1){
+        flex-basis: 534px;
+        flex-shrink: 1;
+        flex-grow: 0;
+
+        .info-wrap {
+          display: flex;
+          margin-top: -50px;
+          margin-left: 55px;
+          position: absolute;
+
+          h1.name {
+            //font-size: 64px;
+            @include res-font(24,64);
+            font-family: 'Monument Extended';
+            border-bottom: 1px solid #343434;
+            padding-bottom: 50px;
+            padding-right: 30px;
+            margin-right: 20px;
+          }
+
+          .person-info {
+            padding-top: 10px;
+            p.position {
+              font-size: 22px;
+            }
+
+            p.instagram {
+              font-size: 16px;
+              display: flex;
+              line-height: 0.9;
+              padding-top: 12px;
+
+              img {
+                margin-right: 12px;
+              }
+            }
+          }
+        }
+      }
+
+      >div:nth-child(2) {
+        flex-basis: 631px;
+        flex-shrink: 1;
+        flex-grow: 0;
+        padding-left: 78px;
+      }
+
+      >div:nth-child(3) {
+        margin-top:140px;
+        //max-width: 1600px;
+        display: flex;
+        flex: 1;
+        justify-content: space-evenly;
+          .col{
+            flex-grow: 0;
+            flex-shrink: 0;
+             flex-basis: 25%;
+            h3{
+              //font-size: 22px;
+              @include res-font(15,22);
+              margin-bottom: 15px;
+            }
+            a{
+              text-decoration: underline;
+            }
+          }
+        .col.specialized{
+          margin-left: -90px;
+        }
+        .col.education{
+
+        }
+      }
+    }
+  }
+}
+.all-team-section{
+  .rectangle{
+    height:100% !important;
+  }
+  h2.team-title{
+    //font-size: 64px;
+    @include res-font(24,64);
+    font-family: "Monument Extended";
+    margin-bottom: -45px;
+    text-align: center;
+  }
+  .section-team{
+    display: grid;
+    max-width: 1328px;
+    margin: 0 auto;
+    width: 100%;
+    //align-items: center;
+    grid-template-columns: repeat(auto-fit, minmax(224px, 1fr));
+    grid-column-gap: 122px;
+    grid-row-gap: 100px;
+    justify-items: center;
+    a.person{
+      flex:0 1 243px;
+      text-align:center;
+      .pic{
+        position:relative;
+        width: 234px;
+        line-height: 0;
+
+        img {
+          background-color: #000;
+        }
+        .bordered{
+          position: absolute;
+          width: 100%;
+          height: 100%;
+          left: 8px;
+          top: 8px;
+          //background: #000;
+          border: 1px solid #343434;
+          border-top: none;
+          border-left: none;
+          z-index: -1;
+        }
+      }
+      .name{
+        font-size:22px;
+        margin:19px 0 8px 0;
+      }
+      .position{
+        font-size:16px;
+      }
+    }
+  }
+}
+.team-page{
+  height:294px;
+  .rectangle{
+    height:100%;
+    bottom:unset;
+  }
+}
+
+
+.page-template-page-team{
+
+ .title{
+   text-align:center;
+   h1 {
+    @include res-font(24,64);
+     font-family: "Monumenall-team-sectiont Extended";
+   }
+
+   .subtitle {
+     //margin:25px 0 95px 0;
+     max-width:558px;
+     text-align: center;
+     margin:25px auto 95px;
+   }
+ }
+}
+
+
+
+
+/* trainers section */
+.trainers-info-section{
+    .inner-holder{
+        .left-col{
+            width: 100%;
+            max-width: 925px;
+        }
+        .right-col{
+          max-width: 760px;
+            h2{
+                @include res-font(24,64);
+                font-family: "Monument Extended";
+              margin-bottom:20px;
+              padding-left:120px;
+            }
+            .description{
+                padding-left:120px;
+                p{
+                    margin-bottom:20px;
+                }
+            }
+            .link{
+                display:block;
+                margin-top:70px;
+                margin-left:120px;
+                text-align:center;
+                //text-decoration: underline;
+              text-decoration: underline;
+              text-underline-position: under;
+              text-underline-offset: 12px;
+              text-decoration-color: #757575;
+            }
+        }
+    }
+}
+
+
+/* Single service page */
+
+.single-services{
+  .single-service-wrap {
+    .video-desc-wrap{
+      height: auto;
+      .rectangle{
+        bottom:unset;
+        height:566px;
+        width:calc(100% - 134px);
+        top:0;
+      }
+      .services-menu{
+        padding: 56px 0 110px 0;
+        ul{
+          display: flex;
+          justify-content: space-between;
+          max-width: 1035px;
+          margin: 0 auto;
+          li{
+            a{
+              text-transform:uppercase;
+            }
+
+            border-bottom: 4px solid transparent;
+            transition: border-color 0.6s linear;
+            padding-bottom:10px;
+          }
+          li:hover,
+          li.active{
+            a{
+              text-shadow: 1px 0 0 #fff;
+            }
+            border-bottom:4px solid #0057FF;
+
+          }
+        }
+      }
+      .video-desc{
+        display:flex;
+        .video{
+          video{
+            width:100%;
+            padding: 0 0 70px 70px;
+          }
+          h1{
+            font-family: "Monument Extended";
+            @include res-font(24,64);
+            position: absolute;
+            z-index: 99;
+            bottom: 9%;
+            max-width: 40%;
+          }
+        }
+        .short-desc{
+           padding: 0 0 70px 70px;
+          display: table-cell;
+          vertical-align: middle;
+          p{
+            //vertical-align: middle;
+            //display: table-cell;
+            margin-bottom:16px;
+          }
+        }
+      }
+    }
+    .team-wrap{
+      height:auto;
+      .rectangle{
+        bottom:0;
+        width: calc(100% - 134px);
+        .team-title{
+          text-align: center;
+          line-height: 7px;
+          font-size: 22px;
+        }
+      }
+      .inner-holder{
+        padding:0;
+        .team-description{
+          padding: 70px 0 50px 0;
+          text-align:center;
+          max-width: 802px;
+          margin:0 auto;
+        }
+      }
+    }
+    .slider-fulldesc{
+
+    }
+  }
+}
+@media (max-width: 767px){
+.tax-team{
+  .hero-section {
+    .rectangle{
+      width:calc(100% - 68px);
+      h2.team-title{
+        margin-bottom: -25px;
+      }
+    }
+    .info-holder {
+      .top-part {
+        max-height: none;
+
+        .person-top-wrap {
+          .person-profile {
+            >img{
+              position: relative;
+              left: 50%;
+              right: 50%;
+              margin-left: -50vw;
+              margin-right: -50vw;
+              width: calc(100% + 200px);
+              max-width: none;
+            }
+            .info-wrap {
+              position: relative;
+              margin: 0;
+              flex-direction: column;
+
+              .name {
+                border: none;
+                margin: 0;
+                padding: 0 0 5px 0;
+              }
+            }
+          }
+
+          .description {
+            padding: 20px 0 0 0;
+          }
+
+          .description-columns {
+            flex-direction: column;
+            margin-top: 20px;
+
+            > div {
+              margin: 0;
+            }
+          }
+        }
+      }
+    }
+  }
+  .all-team-section{
+    .rectangle{
+      >div{
+        display: none;
+      }
+    }
+  }
+}
+  .team-page {
+    height: 225px;
+
+    .rectangle {
+      height: 100%;
+      bottom: unset;
+    }
+  }
+
+}
+@media (max-width: 980px) {
+  .trainers-info-section {
+    .inner-holder {
+      flex-direction:column;
+      .left-col {
+        width: 100%;
+        max-width: 925px;
+      }
+
+      .right-col {
+        padding:22px 16px;
+        max-width: 760px;
+        h2{
+          margin-left:0 !important;
+          padding-left:0 !important;
+        }
+
+        .description {
+          padding-left: 0px !important ;
+
+          p {
+            margin-bottom: 20px;
+          }
+        }
+
+        .link {
+          //text-align: center;
+          margin:30px auto;
+        }
+      }
+    }
+  }
+}
+@media only screen and (min-width: 768px) and (max-width: 1400px){
+  .tax-team {
+    .hero-section {
+      .rectangle {
+        width: calc(100% - 68px);
+
+        h2.team-title {
+          margin-bottom: -25px;
+        }
+      }
+
+      .info-holder {
+        .top-part {
+          max-height: none;
+
+          .person-top-wrap {
+            .person-profile {
+              > img {
+                position: relative;
+
+                width: calc(100% + 200px);
+                max-width: none;
+              }
+
+              .info-wrap {
+                position: relative;
+                margin: 0;
+                flex-direction: column;
+
+                .name {
+                  border: none;
+                  margin: 0;
+                  padding: 0 0 5px 0;
+                }
+              }
+            }
+
+            .description {
+              padding: 20px 0 0 0;
+            }
+
+            .description-columns {
+              flex-direction: column;
+              margin-top: 20px;
+              margin-left: 50px;
+              > div {
+                margin: 0;
+              }
+            }
+          }
+        }
+      }
+    }
+
+    .all-team-section {
+      .rectangle {
+        > div {
+          display: none;
+        }
+      }
+    }
+  }
+
+
+}
+

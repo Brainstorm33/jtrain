@@ -1,0 +1,344 @@
+@font-face {
+    font-family: 'GT America';
+    src: local('GT America Thin Italic'), local('GTAmerica-ThinItalic'),
+    url('fonts/GTAmerica-ThinItalic.woff2') format('woff2'),
+    url('fonts/GTAmerica-ThinItalic.woff') format('woff');
+    font-weight: 100;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'GT America';
+    src: local('GT America Thin'), local('GTAmerica-Thin'),
+    url('fonts/GTAmerica-Thin.woff2') format('woff2'),
+    url('fonts/GTAmerica-Thin.woff') format('woff');
+    font-weight: 100;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'GT America';
+    src: local('GT America Light'), local('GTAmerica-Light'),
+    url('fonts/GTAmerica-Light.woff2') format('woff2'),
+    url('fonts/GTAmerica-Light.woff') format('woff');
+    font-weight: 300;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'GT America';
+    src: local('GT America Regular'), local('GTAmerica-Regular'),
+    url('fonts/GTAmerica-Regular.woff2') format('woff2'),
+    url('fonts/GTAmerica-Regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'GT America';
+    src: local('GT America Regular Italic'), local('GTAmerica-RegularItalic'),
+    url('fonts/GTAmerica-RegularItalic.woff2') format('woff2'),
+    url('fonts/GTAmerica-RegularItalic.woff') format('woff');
+    font-weight: normal;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'GT America';
+    src: local('GT America Bold Italic'), local('GTAmerica-BoldItalic'),
+    url('fonts/GTAmerica-BoldItalic.woff2') format('woff2'),
+    url('fonts/GTAmerica-BoldItalic.woff') format('woff');
+    font-weight: bold;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'GT America';
+    src: local('GT America Medium'), local('GTAmerica-Medium'),
+    url('fonts/GTAmerica-Medium.woff2') format('woff2'),
+    url('fonts/GTAmerica-Medium.woff') format('woff');
+    font-weight: 500;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'GT America';
+    src: local('GT America Medium Italic'), local('GTAmerica-MediumItalic'),
+    url('fonts/GTAmerica-MediumItalic.woff2') format('woff2'),
+    url('fonts/GTAmerica-MediumItalic.woff') format('woff');
+    font-weight: 500;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'GT America';
+    src: local('GT America Bold'), local('GTAmerica-Bold'),
+    url('fonts/GTAmerica-Bold.woff2') format('woff2'),
+    url('fonts/GTAmerica-Bold.woff') format('woff');
+    font-weight: bold;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'GT America';
+    src: local('GT America Light Italic'), local('GTAmerica-LightItalic'),
+    url('fonts/GTAmerica-LightItalic.woff2') format('woff2'),
+    url('fonts/GTAmerica-LightItalic.woff') format('woff');
+    font-weight: 300;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'Montserrat';
+    src: local('Montserrat Black'), local('Montserrat-Black'),
+    url('fonts/Montserrat-Black.woff2') format('woff2'),
+    url('fonts/Montserrat-Black.woff') format('woff');
+    font-weight: 900;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Montserrat';
+    src: local('Montserrat'), local('Montserrat-Regular'),
+    url('fonts/Montserrat-Regular.woff2') format('woff2'),
+    url('fonts/Montserrat-Regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Montserrat';
+    src: local('Montserrat Light'), local('Montserrat-Light'),
+    url('fonts/Montserrat-Light.woff2') format('woff2'),
+    url('fonts/Montserrat-Light.woff') format('woff');
+    font-weight: 300;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Montserrat';
+    src: local('Montserrat Hairline'), local('Montserrat-Thin'),
+    url('fonts/Montserrat-Thin.woff2') format('woff2'),
+    url('fonts/Montserrat-Thin.woff') format('woff');
+    font-weight: 100;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Montserrat';
+    src: local('Montserrat Bold'), local('Montserrat-Bold'),
+    url('fonts/Montserrat-Bold.woff2') format('woff2'),
+    url('fonts/Montserrat-Bold.woff') format('woff');
+    font-weight: bold;
+    font-style: normal;
+}
+
+body {
+    font-family: "GT America";
+    font-size: 20px;
+    line-height: 27px;
+    letter-spacing: 0.01em;
+    color: #1d1d1d;
+    font-weight: 300;
+}
+
+body p {
+    margin-bottom: 40px;
+}
+
+body a {
+    text-decoration: underline;
+    color: #000;
+}
+
+body strong {
+    font-weight: bold;
+}
+
+body em {
+    font-style: italic;
+}
+
+body ul {
+    list-style-type: disc;
+    margin: 10px 0;
+    padding-left: 30px;
+    text-align: left;
+}
+
+body ol {
+    list-style-type: decimal;
+    margin: 10px 0;
+    padding-left: 30px;
+    text-align: left;
+}
+
+body li {
+    margin: 15px 0;
+}
+
+@media (max-width: 1000px) {
+    body li {
+        margin: 10px 0;
+    }
+}
+
+body figure {
+    text-align: center;
+}
+
+body img {
+    max-width: 100%;
+    height: auto;
+    margin: 25px 0;
+}
+
+@media (max-width: 1000px) {
+    body img {
+        margin: 7px 0;
+    }
+}
+
+body img.alignleft {
+    float: left;
+    margin: 10px;
+    margin-left: 0;
+}
+
+body img.alignright {
+    float: right;
+    margin: 10px;
+    margin-right: 0;
+}
+
+body blockquote {
+    background: #f9f9f9;
+    border-left-width: 10px;
+    border-left-style: solid;
+    margin: 1.5em 0;
+    padding: 0.5em 10px;
+    padding-left: 20px;
+}
+
+@media (max-width: 1000px) {
+    body blockquote {
+        border-left-width: 7px;
+        margin: 1.2em 7px;
+        padding: 0.3em 7px;
+    }
+}
+
+body blockquote p {
+    display: inline;
+}
+
+body h1, body h2, body h3, body h4, body h5, body h6 {
+    letter-spacing: -0.04em;
+    font-family: 'Montserrat';
+    font-weight: normal;
+}
+
+body h1:not(:last-child), body h2:not(:last-child), body h3:not(:last-child), body h4:not(:last-child), body h5:not(:last-child), body h6:not(:last-child) {
+    margin-bottom: 40px;
+}
+
+body h1 {
+    font-size: 32px;
+    line-height: 38px;
+}
+
+body h2 {
+    font-size: 30px;
+    line-height: 36px;
+}
+
+body h3 {
+    font-size: 28px;
+    line-height: 34px;
+}
+
+body h4 {
+    font-size: 22px;
+}
+
+body h5, body h6 {
+    font-weight: normal;
+}
+
+body a:visited {
+    color: #000;
+    text-decoration: none;
+}
+
+body iframe {
+    width: 100%;
+}
+
+body .aligncenter {
+    margin: 0 auto;
+    display: block;
+    text-align: center;
+}
+
+body .alignleft {
+    margin-left: 0;
+    margin-right: auto;
+}
+
+body .alignright {
+    margin-left: auto;
+    margin-right: 0;
+}
+
+body hr {
+    border-top: 1px solid #ccc;
+    margin: 15px 0;
+}
+
+body hr.short {
+    max-width: 300px;
+    margin: 15px auto;
+}
+
+body .wp-caption {
+    margin-bottom: 15px;
+}
+
+@media (max-width: 1000px) {
+    body .wp-caption {
+        margin-bottom: 10px;
+    }
+}
+
+body .wp-caption img {
+    background-color: white;
+}
+
+body .wp-caption-text, body .wp-thumbnail-caption {
+    line-height: 1.5em;
+    text-align: left;
+    margin-top: 0px;
+    margin-bottom: 10px;
+    font-style: normal;
+    font-size: 16px;
+    color: #999;
+    padding: 15px 0 0 0;
+}
+
+@media (max-width: 1000px) {
+    body .wp-caption-text, body .wp-thumbnail-caption {
+        font-size: 15px;
+    }
+}
+
+body .wp-caption-text a, body .wp-thumbnail-caption a {
+    color: #777;
+    border: none;
+    text-decoration: none;
+}
+
+body .wp-caption-text a:hover, body .wp-thumbnail-caption a:hover, body .wp-caption-text a:focus, body .wp-thumbnail-caption a:focus, body .wp-caption-text a:active, body .wp-thumbnail-caption a:active {
+    color: #777;
+    border: none;
+    text-decoration: none;
+}
