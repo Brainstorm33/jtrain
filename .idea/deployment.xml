@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="PublishConfigData" autoUpload="Always" serverName="DEV server" autoUploadExternalChanges="true">
+    <serverData>
+      <paths name="DEV server">
+        <serverdata>
+          <mappings>
+            <mapping deploy="/jtrain.brainstormtech.pro/wp-content/themes/jtrain" local="$PROJECT_DIR$" web="/" />
+          </mappings>
+          <excludedPaths>
+            <excludedPath path="/jtrain.brainstormtech.pro/wp-content/themes/jtrain/node_modules" />
+          </excludedPaths>
+        </serverdata>
+      </paths>
+    </serverData>
+    <option name="myAutoUpload" value="ALWAYS" />
+  </component>
+</project>
