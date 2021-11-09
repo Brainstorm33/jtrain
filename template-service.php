@@ -177,6 +177,8 @@ $page_data = get_fields();
             }
         });
     }
+
+    loadMap();
 </script>
 
 <?php get_footer(); ?>

@@ -488,6 +488,7 @@ html {
   }
 }
 .all-team-section{
+  padding-bottom:67px;
   .rectangle{
     height:100% !important;
   }
@@ -533,11 +534,11 @@ html {
         }
       }
       .name{
-        font-size:22px;
+        @include res-font(15,22);
         margin:19px 0 8px 0;
       }
       .position{
-        font-size:16px;
+        @include res-font(14,16);
       }
     }
   }
@@ -552,7 +553,6 @@ html {
 
 
 .page-template-page-team{
-
  .title{
    text-align:center;
    h1 {
@@ -629,20 +629,27 @@ html {
           max-width: 1035px;
           margin: 0 auto;
           li{
+            padding-bottom:10px;
+            margin-bottom:10px;
             a{
               text-transform:uppercase;
+              border-bottom: 4px solid transparent;
+              transition: border-color 0.6s linear;
+              padding-bottom: 10px;
             }
 
-            border-bottom: 4px solid transparent;
-            transition: border-color 0.6s linear;
-            padding-bottom:10px;
+
+
           }
           li:hover,
           li.active{
             a{
               text-shadow: 1px 0 0 #fff;
+              padding-bottom:10px;
+              border-bottom: 4px solid #0057FF;
             }
-            border-bottom:4px solid #0057FF;
+
+            padding-bottom: 10px;
 
           }
         }
@@ -652,7 +659,7 @@ html {
         .video{
           video{
             width:100%;
-            padding: 0 0 70px 70px;
+            padding: 0 0 150px 70px;
           }
           h1{
             font-family: "Monument Extended";
@@ -661,6 +668,7 @@ html {
             z-index: 99;
             bottom: 9%;
             max-width: 40%;
+            line-height: normal;
           }
         }
         .short-desc{
@@ -682,7 +690,6 @@ html {
         width: calc(100% - 134px);
         .team-title{
           text-align: center;
-          line-height: 7px;
           font-size: 22px;
         }
       }
@@ -697,9 +704,75 @@ html {
       }
     }
     .slider-fulldesc{
+      display: flex;
+      align-items: center;
+      margin-top:167px;
+      >div{
+        flex:1;
+      }
+      .slider{
+        max-width: 844px;
+        overflow: hidden;
+        .paginate{
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          width:184px;
+          height:24px;
+          position:relative;
+          margin:64px auto 0;
+
+          .swiper-button-prev,
+          .swiper-button-next {
+            height: 24px;
+            width: 12px;
+            background-size: 100% 100%;
+            margin: 0;
+            top: 0;
+          }
+          .swiper-pagination{
+            display: flex;
+            align-items: center;
+
+
+              .swiper-pagination-bullet:not(.swiper-pagination-bullet-active) {
+                border: 1px solid white;
+              }
+
+              .swiper-pagination-bullet {
+                margin: 0 20px;
+              }
+
+
+            .swiper-pagination-bullet-active{
+              width:13px;
+              height:13px;
+              background-color:#0057FF;
+            }
+          }
+        }
+
+      }
+      .full-description{
+        > div {
+          max-width: 572px;
+          margin-left: 132px;
+          h3{
+            font-size: 22px;
+            margin:32px 0;
+          }
+          p{
+            margin-bottom: 25px;
+          }
+        }
+      }
 
     }
+  .contact-services{
+    margin-top:288px;
   }
+  }
+
 }
 @media (max-width: 767px){
 .tax-team{
@@ -770,7 +843,6 @@ html {
       bottom: unset;
     }
   }
-
 }
 @media (max-width: 980px) {
   .trainers-info-section {
@@ -804,6 +876,70 @@ html {
       }
     }
   }
+.single-services{
+.video-desc-wrap{
+  .rectangle{
+    width:calc(100% - 68px) !important;
+  }
+  .services-menu {
+    ul {
+      flex-direction: column;
+      text-align: center;
+    }
+  }
+
+  .video-desc {
+    flex-direction: column;
+
+    .video {
+      position: relative;
+      padding-bottom: 97px;
+
+      video {
+        padding: 0 !important;
+      }
+
+      h1 {
+        max-width: 100% !important;
+      }
+    }
+
+    .short-desc {
+      padding: 0 !important;
+    }
+  }
+}
+  .team-wrap{
+    .rectangle{
+      width: calc(100% - 40px) !important;
+      h2.team-title{
+        text-align: left !important;
+      }
+      >div{
+        display:none;
+      }
+    }
+    .team-description{
+      padding-left: 20px !important;
+      padding-right: 20px !important;
+      text-align:left !important;
+    }
+    .team-profiles{
+      padding: 0px 67px;
+    }
+  }
+  .slider-fulldesc{
+    flex-direction: column;
+    .full-description{
+      >div{
+        margin:0 20px !important;
+      }
+    }
+  }
+  .contact-services{
+    margin-top:0 !important;
+  }
+}
 }
 @media only screen and (min-width: 768px) and (max-width: 1400px){
   .tax-team {

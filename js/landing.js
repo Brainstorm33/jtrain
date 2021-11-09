@@ -1,6 +1,22 @@
 // alert('loaded');
 jQuery(document).ready(function ($) {
-
+    // new Swiper('.service-slider-wrap', {
+    //     slidesPerView: 1,
+    //     // spaceBetween: 50,
+    //     loop: false,
+    //     // allowSlideNext: false,
+    //     // allowSlidePrev: false,
+    //     centeredSlides: true,
+    //     // slidesToShow: 4,
+    //     // slidesToScroll: 3,
+    //     // initialSlide: currentSlide,
+    //     // slideToClickedSlide: true,
+    //     // watchSlidesVisibility: true,
+    //     // watchSlidesProgress: true,
+    //     freeMode: {
+    //         enabled: true
+    //     }
+    // });
     // if (jQuery('.services-top-menu-swiper-wrap').length) {
     //     // function swiperInit() {
     //     jQuery('.services-top-menu-swiper-wrap > li').each(function (index, value) {
