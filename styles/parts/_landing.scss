@@ -657,9 +657,27 @@ html {
       .video-desc{
         display:flex;
         .video{
+          max-width:792px;
+          position: relative;
           video{
             width:100%;
             padding: 0 0 150px 70px;
+          }
+          .video-icon{
+            display: block;
+            position: absolute;
+            top: -30%;
+            bottom: 0px;
+            right: -10%;
+            left: 0;
+            margin: auto;
+            width: 88px;
+            height: 88px;
+            font-size: 0;
+            -webkit-transform: translate3d(0, 0, 0);
+            -ms-transform: translate3d(0, 0, 0);
+            transform: translate3d(0, 0, 0);
+            cursor: pointer;
           }
           h1{
             font-family: "Monument Extended";
@@ -667,12 +685,13 @@ html {
             position: absolute;
             z-index: 99;
             bottom: 9%;
-            max-width: 40%;
+            max-width: 100%;
             line-height: normal;
           }
         }
         .short-desc{
-           padding: 0 0 70px 70px;
+          flex: 1;
+          padding: 0 0 70px 70px;
           display: table-cell;
           vertical-align: middle;
           p{
@@ -764,6 +783,13 @@ html {
           p{
             margin-bottom: 25px;
           }
+        }
+      }
+      .full-description:not(.has-slider){
+        text-align: center;
+        >div{
+          max-width: 678px;
+         margin:0 auto;
         }
       }
 
@@ -898,7 +924,9 @@ html {
       video {
         padding: 0 !important;
       }
-
+      .video-icon{
+        right:0 !important;
+      }
       h1 {
         max-width: 100% !important;
       }

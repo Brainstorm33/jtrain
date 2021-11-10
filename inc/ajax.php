@@ -22,8 +22,8 @@ function contact_form() {
 		'submit_date'   => current_time( 'mysql' ),
 		'ip_address' => get_client_ip()
 	) );
-	$adminMail = 'susanna@brainstormtech.io';
-	//$adminMail = get_field('admin_email','option');
+//	$adminMail = 'david.danielyan@brainstormtech.io';
+	$adminMail = get_field('admin_email','option');
 	$subject  = 'J Train Contact form Submission';
 	$msg       = '<div style="width:600px;background:white;padding:25px 0;">
         <div style="font-family: arial;width:100%;display:block;">You have new message from Contact form. Please find  details below:</div><br/><br/>';

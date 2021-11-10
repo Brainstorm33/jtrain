@@ -2927,7 +2927,8 @@ body.loading {
                                     max-width: 235px;
                                     height: 50px;
                                     width: 100%;
-                                    border: 1px solid $blue;
+                                    background-color:  $blue;
+                                    padding-left: 15px;
                                     cursor: pointer;
                                     @extend .with-hover;
                                     .icon {

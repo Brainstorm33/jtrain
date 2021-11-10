@@ -1,12 +1,12 @@
 <?php get_header(); ?>
 <?php
 global $of, $pf;
-$services_list = new WP_Query(array('post_type' =>  'services', 'posts_per_page'    =>  -1));
+$services_list = new WP_Query(array('post_type' =>  'services', 'posts_per_page'    =>  -1, 'order'=>'ASC'));
+$services_list_items = [];
 $obj_id      = get_queried_object_id();
 $current_url = get_permalink( $obj_id );
 $service_data = get_fields();
 $team_list = wp_get_post_terms($obj_id, 'team', array('fields' => 'all') );
-//var_dump($service_data['slider']);
 ?>
 <div class="single-service-wrap">
 	<section class='hero-section video-desc-wrap'>
@@ -21,6 +21,7 @@ $team_list = wp_get_post_terms($obj_id, 'team', array('fields' => 'all') );
 							<?php
 							while ( $services_list->have_posts() ) {
 								$services_list->the_post();
+								$services_list_items[] = get_the_title();
 								if( $current_url == get_permalink() ){
 									echo '<li class="active"><a href="' . get_permalink() . '">' . get_the_title() . '</a></li>';
 								} else{
@@ -33,26 +34,28 @@ $team_list = wp_get_post_terms($obj_id, 'team', array('fields' => 'all') );
 					<div class="video-desc">
 						<div class="video">
 							<video muted='' webkit-playsinline='' autoplay='' loop='' playsinline=''
-							       poster='https://jtrain.brainstormtech.pro/wp-content/uploads/2020/12/meet-the-man.jpg'
+							       poster='<?php echo $service_data["video_cover_photo"]; ?>'
 							       data-autoplay=''>
 								<source
-									src='https://jtrain.brainstormtech.pro/wp-content/uploads/2020/12/meet-the-man_preview.mp4'
+									src='<?php echo $service_data["video_file"]; ?>'
 									type='video/mp4'>
-								<img src='https://jtrain.brainstormtech.pro/wp-content/uploads/2020/12/meet-the-man.jpg'
+								<img src='<?php echo $service_data["video_cover_photo"]; ?>'
 								     alt='Meet the Man Who Has Trained Everyone.'>
-								<a data-fancybox='' data-small-btn='true'
-								   href='https://jtrain.brainstormtech.pro/wp-content/uploads/2020/12/meet-the-man.mp4'
-								   class='video-icon'>
-									<img
-										src='https://jtrain.brainstormtech.pro/wp-content/themes/jtrain/images/play-icon.svg'
-										alt='Play'>
-								</a>
 							</video>
-							<h1><?php echo get_the_title(); ?></h1>
+                            <a data-fancybox='' data-small-btn='true'
+                               href='<?php echo $service_data["video_file"]; ?>'
+                               class='video-icon'>
+                                <img
+                                        src='<?php echo get_site_url(); ?>/wp-content/themes/jtrain/images/play-icon.svg'
+                                        alt='Play'>
+                            </a>
+                            <h1><?php single_post_title(); ?></h1>
 						</div>
+                        <?php if($service_data['short_description']){ ?>
 						<div class="short-desc">
-							<?php echo $service_data['short_description'] ?>
+							<?php echo $service_data['short_description']; ?>
 						</div>
+                        <?php } ?>
 					</div>
 				</div>
 			</div>
@@ -68,7 +71,7 @@ $team_list = wp_get_post_terms($obj_id, 'team', array('fields' => 'all') );
 				<div class='info-holder flex fdc'>
 					<div class="team-description">
 						<p>
-							<?php echo $service_data['description_team_section'] ?? $service_data['description_team_section']; ?>
+							<?php if ( $service_data['description_team_section'] ){ ?><?php echo $service_data['description_team_section'] ?? $service_data['description_team_section']; ?><?php } ?>
 						</p>
 					</div>
 					<div class="team-profiles all-team-section">
@@ -85,7 +88,6 @@ $team_list = wp_get_post_terms($obj_id, 'team', array('fields' => 'all') );
 									<div class="name"><?php echo $person->name ?></div>
 									<div
 										class="position"><?php echo get_field( 'position', $person ); ?></div>
-									<?php //var_dump($person); ?>
 								</a>
 							<?php } ?>
 						</div>
@@ -95,6 +97,7 @@ $team_list = wp_get_post_terms($obj_id, 'team', array('fields' => 'all') );
 		</div>
 	</section>
 	<section class="slider-fulldesc ">
+        <?php if($service_data['has_slider'] == true){ ?>
 		<div class="slider">
             <div class='service-slider-wrap swiper'>
                 <div class='service-slider-swiper swiper-wrapper'>
@@ -108,13 +111,15 @@ $team_list = wp_get_post_terms($obj_id, 'team', array('fields' => 'all') );
                     <div class='swiper-button-next swiper-button-white'></div>
                 </div>
             </div>
-
         </div>
-		<div class="full-description">
+        <?php } ?>
+		<?php if ( $service_data['full_description'] ){ ?>
+        <div class="full-description <?=($service_data['has_slider']) ? 'has-slider' : ''?>">
            <div>
 	           <?php echo $service_data['full_description']; ?>
            </div>
 		</div>
+        <?php } ?>
 	</section>
     <section class='contact-section contact-services'>
         <div class='section-wrp flex pr2'>
@@ -144,8 +149,9 @@ $team_list = wp_get_post_terms($obj_id, 'team', array('fields' => 'all') );
                                     <div class="form-row select-row">
                                         <select name="service" id="service">
                                             <option value="" selected>What service you are interested in?</option>
-                                            <option value="option1">option1</option>
-                                            <option value="option2">option2</option>
+                                            <?php foreach ($services_list_items as $service){ ?>
+                                            <option value="<?php echo $service; ?>"><?php echo $service; ?></option>
+                                            <?php } ?>
                                         </select>
                                     </div>
                                     <div class="form-row">
@@ -253,6 +259,69 @@ $team_list = wp_get_post_terms($obj_id, 'team', array('fields' => 'all') );
                 prevEl: '.swiper-button-prev',
             },
         });
+
+
+        $('#contact-form').on('submit', function (e) {
+            e.preventDefault();
+
+            if ($(this).hasClass('loading')) {
+                return false;
+            }
+            const self = $(this),
+                name = $(`#name`, this),
+                email = $(`#email`, this),
+                phone = $(`#phone`, this),
+                service = $(`#service`, this),
+                message = $(`#message`, this),
+                emailRegex = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|('.+'))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
+                errors = [];
+
+            if (name.val().trim() == '') {
+                errors.push(name)
+            }
+            if (phone.val().trim() == '') {
+                errors.push(phone)
+            }
+            if (service.val().trim() == '') {
+                errors.push(service)
+            }
+            if (message.val().trim() == '') {
+                errors.push(message)
+            }
+            if (!emailRegex.test(String(email.val().toLowerCase()))) {
+                errors.push(email)
+            }
+
+            if (errors.length != 0) {
+                for (var i = 0; i < errors.length; i++) {
+                    errors[i].addClass(`error`);
+                }
+            } else {
+                var fd = new FormData(this);
+                fd.append('action', 'contact_form');
+                console.log(fd);
+                $.ajax({
+                    url: ajax.url,
+                    type: 'POST',
+                    contentType: false,
+                    processData: false,
+                    data: fd,
+                    beforeSend: function () {
+                        self.addClass('loading');
+                    },
+                    success: function (data) {
+                        if (data.success) {
+                            self[0].reset();
+                            self.addClass('success');
+                            self.removeClass('loading');
+                        }
+                    },
+                    error: function (err) {
+                    }
+                });
+            }
+
+        });
     });
 
     var map;
@@ -280,5 +349,9 @@ $team_list = wp_get_post_terms($obj_id, 'team', array('fields' => 'all') );
     }
 
     loadMap();
+
+
+
+
 </script>
 <?php get_footer(); ?>
