@@ -750,6 +750,7 @@ body.menu-opened {
         }
         .menu-items{
             display:flex;
+            justify-content: flex-end;
             ul.top-menu{
                 display:flex;
                 margin-right:10px;
@@ -815,6 +816,9 @@ body.menu-opened {
                     height: auto;
                 }
             }
+        }
+        >div{
+            flex:1;
         }
     }
 }

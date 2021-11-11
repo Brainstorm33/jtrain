@@ -8,8 +8,8 @@ $current_url = get_permalink( $obj_id );
 $service_data = get_fields();
 $team_list = wp_get_post_terms($obj_id, 'team', array('fields' => 'all') );
 ?>
-<div class="single-service-wrap">
-	<section class='hero-section video-desc-wrap'>
+<div class="single-service-wrap" id="swup">
+	<section  class='hero-section video-desc-wrap'>
 		<div class='rectangle'>
 			<div></div>
 		</div>
@@ -31,7 +31,7 @@ $team_list = wp_get_post_terms($obj_id, 'team', array('fields' => 'all') );
 							?>
 						</ul>
 					</div>
-					<div class="video-desc">
+					<div class="transition-fade  video-desc">
 						<div class="video">
 							<video muted='' webkit-playsinline='' autoplay='' loop='' playsinline=''
 							       poster='<?php echo $service_data["video_cover_photo"]; ?>'
@@ -61,7 +61,7 @@ $team_list = wp_get_post_terms($obj_id, 'team', array('fields' => 'all') );
 			</div>
 		</div>
 	</section>
-	<section class='hero-section team-wrap'>
+	<section class='hero-section team-wrap transition-fade'>
 		<div class='rectangle'>
 			<h2 class='team-title'><?php echo $service_data['title_team_section'] ?? $service_data['title_team_section'];  ?></h2>
 			<div></div>
@@ -96,7 +96,7 @@ $team_list = wp_get_post_terms($obj_id, 'team', array('fields' => 'all') );
 			</div>
 		</div>
 	</section>
-	<section class="slider-fulldesc ">
+	<section  class="slider-fulldesc transition-fade ">
         <?php if($service_data['has_slider'] == true){ ?>
 		<div class="slider">
             <div class='service-slider-wrap swiper'>
@@ -244,7 +244,60 @@ $team_list = wp_get_post_terms($obj_id, 'team', array('fields' => 'all') );
     </section>
 </div>
 <script>
+    var map;
+
+    function loadMap() {
+        const place = {
+            lat: 40.7256262,
+            lng: -74.0087898
+        };
+        map = new google.maps.Map(document.getElementById('map'), {
+            center: place,
+            zoom: 17,
+            mapId: '5973d810e21cb52d'
+        });
+
+        const marker = new google.maps.Marker({
+            position: place,
+            map: map,
+            icon: {
+                //    anchor: new google.maps.Point(69, 104),
+                size: new google.maps.Size(69, 104),
+                url: 'https://jtrain.brainstormtech.pro/wp-content/themes/jtrain/images/map-marker.svg'
+            }
+        });
+    }
+
+    loadMap();
     jQuery(document).ready(function ($) {
+        // const noSwupAnchors = [
+        //     '.header-nav-wrp a',
+        //     '#menu-top-menu > li > a'
+        // ]
+        $('.services-menu a, #menu-item-233 a').attr('data-has-swup','');
+        //page transition
+        $('a').each(function (index) {
+            var attr = $(this).attr('data-has-swup');
+
+            if (typeof attr !== 'undefined' && attr !== false) {
+
+                    // console.log('have data-has-swup');
+
+            } else {
+                // console.log('not have');
+                  $(this).attr('data-no-swup','');
+            }
+
+        });
+        const options = {
+            linkSelector:
+                'a[href^="' +
+                window.location.origin +
+                '"]:not([data-no-swup]), a[href^="/"]:not([data-no-swup]), a[href^="#"]:not([data-no-swup])'
+        };
+        const swup = new Swup(options);
+
+        //end
         new Swiper('.service-slider-wrap', {
             slidesPerView: 'auto',
             spaceBetween: 0,
@@ -324,31 +377,7 @@ $team_list = wp_get_post_terms($obj_id, 'team', array('fields' => 'all') );
         });
     });
 
-    var map;
 
-    function loadMap() {
-        const place = {
-            lat: 40.7256262,
-            lng: -74.0087898
-        };
-        map = new google.maps.Map(document.getElementById('map'), {
-            center: place,
-            zoom: 17,
-            mapId: '5973d810e21cb52d'
-        });
-
-        const marker = new google.maps.Marker({
-            position: place,
-            map: map,
-            icon: {
-                //    anchor: new google.maps.Point(69, 104),
-                size: new google.maps.Size(69, 104),
-                url: 'https://jtrain.brainstormtech.pro/wp-content/themes/jtrain/images/map-marker.svg'
-            }
-        });
-    }
-
-    loadMap();
 
 
 
