@@ -610,7 +610,11 @@ html {
 
 
 /* Single service page */
-
+.single-services.postid-250{
+  .short-desc{
+    justify-content: unset !important;
+  }
+}
 .single-services{
   .single-service-wrap {
     .video-desc-wrap{
@@ -622,7 +626,7 @@ html {
         top:0;
       }
       .services-menu{
-        padding: 56px 0 110px 0;
+        padding: 56px 0 100px 0;
         ul{
           display: flex;
           justify-content: space-between;
@@ -631,11 +635,16 @@ html {
           li{
             padding-bottom:10px;
             margin-bottom:10px;
+            text-align:center;
             a{
               text-transform:uppercase;
               border-bottom: 4px solid transparent;
-              transition: border-color 0.6s linear;
+              //transition: border-color 0.6s linear;
               padding-bottom: 10px;
+              //letter-spacing: 1px;
+              //display:inline-block;
+              //width:calc(100% + 5px);
+              transition:all 0.3s;
             }
 
 
@@ -644,9 +653,10 @@ html {
           li:hover,
           li.active{
             a{
-              text-shadow: 1px 0 0 #fff;
+              font-weight: bold;
               padding-bottom:10px;
               border-bottom: 4px solid #0057FF;
+//letter-spacing: 0px;
             }
 
             padding-bottom: 10px;
@@ -661,12 +671,12 @@ html {
           position: relative;
           video{
             width:100%;
-            padding: 0 0 150px 70px;
+            padding: 0 0 40px 70px;
           }
           .video-icon{
             display: block;
             position: absolute;
-            top: -30%;
+            top: -15%;
             bottom: 0px;
             right: -10%;
             left: 0;
@@ -678,22 +688,29 @@ html {
             -ms-transform: translate3d(0, 0, 0);
             transform: translate3d(0, 0, 0);
             cursor: pointer;
+            background-image: url('https://jtrain.brainstormtech.pro/wp-content/themes/jtrain/images/play-icon.svg');
           }
           h1{
             font-family: "Monument Extended";
             @include res-font(24,64);
             position: absolute;
             z-index: 99;
-            bottom: 9%;
+            bottom: 0%;
+            height: 160px;
             max-width: 100%;
             line-height: normal;
+            display: flex;
+            align-items: center;
+            //padding-left: 8px;
           }
         }
         .short-desc{
-          flex: 1;
+          //flex: 1;
           padding: 0 0 70px 70px;
-          display: table-cell;
-          vertical-align: middle;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          max-width: 574px;
           p{
             //vertical-align: middle;
             //display: table-cell;
@@ -714,18 +731,40 @@ html {
         }
       }
       .inner-holder{
-        padding:0;
+        padding-top: 0;
         .team-description{
           padding: 70px 0 50px 0;
           text-align:center;
           max-width: 802px;
           margin:0 auto;
         }
+
+        .full-description {
+          > div {
+            max-width: 572px;
+            margin-left: 132px;
+            text-align: center;
+            margin: 0 auto;
+            h3 {
+              font-size: 22px;
+              margin: 0 0 32px 0;
+            }
+
+            p {
+              margin-bottom: 25px;
+            }
+
+            p:last-child {
+              margin-bottom: 87px;
+            }
+          }
+        }
       }
     }
     .slider-fulldesc{
       display: flex;
-      align-items: center;
+      //align-items: center;
+
       margin-top:167px;
       >div{
         flex:1;
@@ -777,9 +816,10 @@ html {
         > div {
           max-width: 572px;
           margin-left: 132px;
+          padding:33px 0;
           h3{
             font-size: 22px;
-            margin:32px 0;
+            margin:0 0 32px 0;
           }
           p{
             margin-bottom: 25px;
@@ -796,7 +836,7 @@ html {
 
     }
   .contact-services{
-    margin-top:288px;
+    margin-top:130px;
   }
   }
 
@@ -810,7 +850,9 @@ html {
         margin-bottom: -25px;
       }
     }
-    .info-holder {
+    .inner-holder{
+      width:100%;
+        .info-holder {
       .top-part {
         max-height: none;
 
@@ -822,7 +864,7 @@ html {
               right: 50%;
               margin-left: -50vw;
               margin-right: -50vw;
-              width: calc(100% + 200px);
+              width: calc(97.9vw);
               max-width: none;
             }
             .info-wrap {
@@ -853,15 +895,27 @@ html {
         }
       }
     }
+    }
   }
-  .all-team-section{
+
+}
+    .all-team-section{
     .rectangle{
       >div{
         display: none;
       }
     }
+    .section-team{
+      grid-template-columns: 1fr 1fr;
+      grid-column-gap: 50px;
+      grid-row-gap: 50px;
+      a.person{
+        .pic {
+          width: 100%;
+        }
+      }
+    }
   }
-}
   .team-page {
     height: 225px;
 
@@ -871,7 +925,18 @@ html {
     }
   }
 }
+ .logo {
+   height: auto !important;
+ }
 @media (max-width: 980px) {
+  .logo{
+    height: auto !important;
+    position: absolute !important;
+    left: 0 !important;
+    right: 0 !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
   .trainers-info-section {
     .inner-holder {
       flex-direction:column;
@@ -912,6 +977,12 @@ html {
     ul {
       flex-direction: column;
       text-align: center;
+      li{
+        margin: 0 auto;
+        a{
+
+        }
+      }
     }
   }
 
@@ -927,6 +998,7 @@ html {
       }
       .video-icon{
         right:0 !important;
+        top:-25%;
       }
       h1 {
         max-width: 100% !important;
@@ -949,16 +1021,13 @@ html {
       }
     }
     .team-description{
-      padding-left: 20px !important;
-      padding-right: 20px !important;
       text-align:left !important;
-    }
-    .team-profiles{
-      padding: 0px 67px;
+      padding:0px 0 50px 0 !important;
     }
   }
   .slider-fulldesc{
     flex-direction: column;
+    margin-top:0;
     .full-description{
       >div{
         margin:0 20px !important;
@@ -1032,32 +1101,39 @@ html {
       }
     }
   }
-
-
-}
-
-.transition-fade {
-  transition: all 900ms cubic-bezier(0.420, 0.000, 0.580, 1.000); /* ease-in-out */
-
-  transition-timing-function: cubic-bezier(0.420, 0.000, 0.580, 1.000); /* ease-in-out */
-  transform:translateX(0);
+  .single-services{
+    .video-desc{
+      .video{
+        height:30vw;
+      }
+    }
+  }
 
 }
 
-html.is-animating .transition-fade {
-  //opacity: 0;
-  transform: translateX(100%);
-
-}
-html.is-animating main,
-html.is-changing main,
-html.is-leaving main,
-html.is-rendering main
-{
-   overflow-y:hidden;
-}
-
-html.is-leaving .transition-fade {
-  //opacity: 0;
-  transform: translateX(-100%);
-}
+//.transition-fade {
+//  transition: all 600ms cubic-bezier(0.420, 0.000, 0.580, 1.000); /* ease-in-out */
+//
+//  transition-timing-function: cubic-bezier(0.420, 0.000, 0.580, 1.000); /* ease-in-out */
+//  transform:translateX(0);
+// transition-delay: 0.6s;
+//}
+//
+//html.is-animating .transition-fade {
+//  //opacity: 0;
+//  transform: translateX(100%);
+//
+//}
+//html.is-animating main,
+//html.is-changing main,
+//html.is-leaving main,
+//html.is-rendering main
+//{
+//   overflow-y:hidden;
+//}
+//
+//html.is-leaving .transition-fade {
+//  //opacity: 0;
+//  transform: translateX(-100%);
+//
+//}

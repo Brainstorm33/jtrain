@@ -8,7 +8,7 @@ $current_url = get_permalink( $obj_id );
 $service_data = get_fields();
 $team_list = wp_get_post_terms($obj_id, 'team', array('fields' => 'all') );
 ?>
-<div class="single-service-wrap" id="swup">
+<div class="single-service-wrap">
 	<section  class='hero-section video-desc-wrap'>
 		<div class='rectangle'>
 			<div></div>
@@ -44,12 +44,8 @@ $team_list = wp_get_post_terms($obj_id, 'team', array('fields' => 'all') );
 							</video>
                             <a data-fancybox='' data-small-btn='true'
                                href='<?php echo $service_data["video_file"]; ?>'
-                               class='video-icon'>
-                                <img
-                                        src='<?php echo get_site_url(); ?>/wp-content/themes/jtrain/images/play-icon.svg'
-                                        alt='Play'>
-                            </a>
-                            <h1><?php single_post_title(); ?></h1>
+                               class='video-icon'></a>
+                            <h1><?php if($service_data["video_title"]){ echo $service_data["video_title"]; } else { single_post_title(); } ?></h1>
 						</div>
                         <?php if($service_data['short_description']){ ?>
 						<div class="short-desc">
@@ -63,7 +59,7 @@ $team_list = wp_get_post_terms($obj_id, 'team', array('fields' => 'all') );
 	</section>
 	<section class='hero-section team-wrap transition-fade'>
 		<div class='rectangle'>
-			<h2 class='team-title'><?php echo $service_data['title_team_section'] ?? $service_data['title_team_section'];  ?></h2>
+			<h2 class='team-title'  style="z-index:9999"><?php echo $service_data['title_team_section'] ?? $service_data['title_team_section'];  ?></h2>
 			<div></div>
 		</div>
 		<div>
@@ -74,7 +70,7 @@ $team_list = wp_get_post_terms($obj_id, 'team', array('fields' => 'all') );
 							<?php if ( $service_data['description_team_section'] ){ ?><?php echo $service_data['description_team_section'] ?? $service_data['description_team_section']; ?><?php } ?>
 						</p>
 					</div>
-					<div class="team-profiles all-team-section">
+					<div class="all-team-section">
 						<div class='section-team'>
 							<?php foreach ( $team_list as $person ) { ?>
 								<a href="<?php echo home_url( '/team/' ) . $person->slug; ?>"
@@ -92,12 +88,21 @@ $team_list = wp_get_post_terms($obj_id, 'team', array('fields' => 'all') );
 							<?php } ?>
 						</div>
 					</div>
+                    <?php if($service_data['has_slider'] == false){ ?>
+	                    <?php if ( $service_data['full_description'] ) { ?>
+                            <div class="full-description <?= ( $service_data['has_slider'] ) ? 'has-slider' : '' ?>">
+                                <div>
+				                    <?php echo $service_data['full_description']; ?>
+                                </div>
+                            </div>
+	                    <?php } ?>
+                    <?php } ?>
 				</div>
 			</div>
 		</div>
 	</section>
-	<section  class="slider-fulldesc transition-fade ">
-        <?php if($service_data['has_slider'] == true){ ?>
+	<?php if($service_data['has_slider'] == true){ ?>
+    <section  class="slider-fulldesc transition-fade ">
 		<div class="slider">
             <div class='service-slider-wrap swiper'>
                 <div class='service-slider-swiper swiper-wrapper'>
@@ -112,7 +117,7 @@ $team_list = wp_get_post_terms($obj_id, 'team', array('fields' => 'all') );
                 </div>
             </div>
         </div>
-        <?php } ?>
+
 		<?php if ( $service_data['full_description'] ){ ?>
         <div class="full-description <?=($service_data['has_slider']) ? 'has-slider' : ''?>">
            <div>
@@ -121,6 +126,7 @@ $team_list = wp_get_post_terms($obj_id, 'team', array('fields' => 'all') );
 		</div>
         <?php } ?>
 	</section>
+	<?php } ?>
     <section class='contact-section contact-services'>
         <div class='section-wrp flex pr2'>
             <div class='inner-holder flex '>
@@ -270,32 +276,28 @@ $team_list = wp_get_post_terms($obj_id, 'team', array('fields' => 'all') );
 
     loadMap();
     jQuery(document).ready(function ($) {
-        // const noSwupAnchors = [
-        //     '.header-nav-wrp a',
-        //     '#menu-top-menu > li > a'
-        // ]
-        $('.services-menu a, #menu-item-233 a').attr('data-has-swup','');
-        //page transition
-        $('a').each(function (index) {
-            var attr = $(this).attr('data-has-swup');
 
-            if (typeof attr !== 'undefined' && attr !== false) {
-
-                    // console.log('have data-has-swup');
-
-            } else {
-                // console.log('not have');
-                  $(this).attr('data-no-swup','');
-            }
-
-        });
-        const options = {
-            linkSelector:
-                'a[href^="' +
-                window.location.origin +
-                '"]:not([data-no-swup]), a[href^="/"]:not([data-no-swup]), a[href^="#"]:not([data-no-swup])'
-        };
-        const swup = new Swup(options);
+        // $('.services-menu a, #menu-item-233 a').attr('data-has-swup','');
+        //
+        // $('a').each(function (index) {
+        //     var attr = $(this).attr('data-has-swup');
+        //
+        //     if (typeof attr !== 'undefined' && attr !== false) {
+        //
+        //
+        //     } else {
+        //
+        //           $(this).attr('data-no-swup','');
+        //     }
+        //
+        // });
+        // const options = {
+        //     linkSelector:
+        //         'a[href^="' +
+        //         window.location.origin +
+        //         '"]:not([data-no-swup]), a[href^="/"]:not([data-no-swup]), a[href^="#"]:not([data-no-swup])'
+        // };
+        // const swup = new Swup(options);
 
         //end
         new Swiper('.service-slider-wrap', {
@@ -313,6 +315,14 @@ $team_list = wp_get_post_terms($obj_id, 'team', array('fields' => 'all') );
             },
         });
 
+        $('.services-menu > ul > li').each(function (index) {
+            $(this).width($(this).width() + 20);
+        });
+       window.addEventListener('resize', function(event){
+            $('.services-menu > ul > li').each(function (index) {
+                $(this).width($(this).width() + 20);
+            });
+        });
 
         $('#contact-form').on('submit', function (e) {
             e.preventDefault();
@@ -375,6 +385,15 @@ $team_list = wp_get_post_terms($obj_id, 'team', array('fields' => 'all') );
             }
 
         });
+    });
+
+    jQuery('#menu-toggle').on('click', function () {
+        jQuery('body').toggleClass('menu-opened');
+        fullpage_api.setAllowScrolling(false);
+    });
+    jQuery('#header-nav .close, #overlay').on('click', function () {
+        jQuery('body').removeClass('menu-opened');
+        fullpage_api.setAllowScrolling(true);
     });
 
 
