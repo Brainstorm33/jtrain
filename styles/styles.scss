@@ -2934,6 +2934,7 @@ body.loading {
                                     background-color:  $blue;
                                     padding-left: 15px;
                                     cursor: pointer;
+                                    margin: 0 auto;
                                     @extend .with-hover;
                                     .icon {
                                         display: none;
