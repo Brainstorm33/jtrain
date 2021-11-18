@@ -16,20 +16,20 @@ get_header();
             <p>Fill out the form below and we’ll get back with a free phone consultation.</p>
         </div>
         <div class="form">
-            <form action='' id='contact-form'>
+            <form action='' id='concierge-form'>
                 <div class='form-fields'>
-                    <input type='hidden' class='token' name='token'  value="<?php echo wp_create_nonce( 'contact_form' ); ?>">
+                    <input type='hidden' class='token' name='token'  value="<?php echo wp_create_nonce( 'concierge_form' ); ?>">
                     <div class='form-row'>
                         <input type='text' placeholder='Your Name' name='yourName' id='name'>
                     </div>
-                    <div class='form-row' style="width:50%;float: left; padding-right: 30px; ">
+                    <div class='form-row mobile-100'>
                         <input type='text' placeholder='E-Mail Address' name='email' id='email'>
                     </div>
-                    <div class='form-row' style="width:50%;float:left">
+                    <div class='form-row mobile-100'>
                         <input type='text' placeholder='Phone' name='phone' id='phone'>
                     </div>
                     <div class='form-row'>
-                        <input type='text' placeholder='Building Address' name='address' id='address'>
+                        <input type='text' placeholder='Building Address' name='building_address' id='building_address'>
                     </div>
                     <div class='form-row'>
                         <input type='text' placeholder='Property / Company Name' name='company' id='company'>
@@ -64,5 +64,86 @@ get_header();
         </div>
     </div>
 </div>
+    <script>
+jQuery(document).ready(function ($) {
 
+    /* contact */
+    $('input, textarea, select').on('input keypress change', function () {
+        $(this).removeClass('error');
+    })
+    /**
+     * Phone Mask
+     */
+    if ($('input#phone').length) {
+        $('input#phone').mask('(000) 000-0000');
+    }
+    $('#concierge-form').on('submit', function (e) {
+        e.preventDefault();
+
+        if ($(this).hasClass('loading')) {
+            return false;
+        }
+        const self = $(this),
+            name = $('#name', this),
+            email = $('#email', this),
+            phone = $('#phone', this),
+            building_address = $('#building_address', this),
+            company = $('#company', this),
+            message = $('#message', this),
+            emailRegex = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|('.+'))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
+            errors = [];
+
+        if (name.val().trim() == '') {
+            errors.push(name)
+        }
+        if (phone.val().trim() == '') {
+            errors.push(phone)
+        }
+        if (company.val().trim() == '') {
+            errors.push(company)
+        }
+        if (building_address.val().trim() == '') {
+            errors.push(company)
+        }
+        if (message.val().trim() == '') {
+            errors.push(message)
+        }
+        if (!emailRegex.test(String(email.val().toLowerCase()))) {
+            errors.push(email)
+        }
+
+        if (errors.length != 0) {
+            for (var i = 0; i < errors.length; i++) {
+                errors[i].addClass('error');
+            }
+        } else {
+            var fd = new FormData(this);
+            fd.append('action', 'concierge_form');
+            // console.log(ajax.url);
+            $.ajax({
+                url: ajax.url,
+                type: 'POST',
+                contentType: false,
+                processData: false,
+                data: fd,
+                beforeSend: function () {
+                    self.addClass('loading');
+                },
+                success: function (data) {
+                    // concole.log(data);
+                    if (data.success) {
+                        self[0].reset();
+                        self.addClass('success');
+                        self.removeClass('loading');
+                    }
+                },
+                error: function (err) {
+                }
+            });
+        }
+
+    })
+
+});
+    </script>
 <?php get_footer(); ?>

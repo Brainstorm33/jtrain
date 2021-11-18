@@ -82,6 +82,17 @@ class Groups_List extends WP_List_Table {
 
 	public function column_default( $item, $column_name ) {
 		switch ( $column_name ) {
+			case 'form_name':
+				if ( stripslashes($item[ $column_name ]) == 'concierge_form' ){
+					return 'Concierge Form';
+				} elseif( stripslashes($item[ $column_name ]) == 'contact_form'  ) {
+					return 'Contact form';
+				}
+				else {
+					return stripslashes($item[ $column_name ]);
+				}
+			case 'building_address':
+			case 'company':
 			case 'name':
 			case 'message':
 			case 'heard':
@@ -107,6 +118,7 @@ class Groups_List extends WP_List_Table {
 	function get_columns() {
 		$columns = [
 			'cb'      => '<input type="checkbox" />',
+			'form_name' => 'Form Name',
 			'name' => 'Name',
 			'email' => 'Email',
 			'phone' => 'Phone',
@@ -114,6 +126,8 @@ class Groups_List extends WP_List_Table {
 			'message' => 'Message',
 			'submit_date' => 'Request Date',
 			'ip_address' => 'IP Address',
+			'company' => 'Company',
+			'building_address' => 'Building Address',
 		];
 
 		return $columns;

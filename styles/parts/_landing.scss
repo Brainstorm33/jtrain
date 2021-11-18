@@ -800,6 +800,7 @@ html {
         border-right: none;
         position: relative;
         padding:190px 0 80px 160px;
+        font-weight: 400;
       h1{
         position: absolute;
         left: -38px;
@@ -808,6 +809,7 @@ html {
         @include res-font(48,72);
         transform: translateX(-50%) translateY(-50%) rotate(-90deg);
         font-family: "Monument Extended";
+          font-weight: 400;
       }
 
       h2.subtitle {
@@ -825,144 +827,161 @@ html {
       .form{
         max-width: 545px;
 
-        &.loading {
-          .btn-row {
-            .icon {
-              display: inline-block;
+        #concierge-form {
+          &.loading {
+            .btn-row {
+              .icon {
+                display: inline-block;
 
-            }
+              }
 
-            .txt {
-              display: none;
+              .txt {
+                display: none;
+              }
             }
           }
-        }
-        &.success {
-          .success-info {
-            display: block;
-          }
-        }
-        .success-info {
-          display: none;
-          padding-top: 12px;
-          color: $blue;
-          font-size: 14px;
-        }
-        .form-row {
-          margin-bottom: 18px;
 
-          &.select-row {
-            position: relative;
-
-            &:after {
-              content: '';
+          &.success {
+            .success-info {
               display: block;
-              width: 25px;
-              height: 13px;
-              background-image: url('../../images/arrow.svg');
-              background-repeat: no-repeat;
-              background-position: center center;
-              -webkit-background-size: contain;
-              background-size: contain;
-              position: absolute;
-              right: 0;
-              top: 0;
-              bottom: 0;
-              margin: auto;
-              pointer-events: none;
             }
           }
 
-          select {
-            -webkit-appearance: none;
-            cursor: pointer;
+          .success-info {
+            display: none;
+            padding-top: 12px;
+            color: $blue;
+            font-size: 14px;
           }
 
-          input,
-          textarea,
-          select {
-            border: none;
-            border-bottom: 1px solid #4D4D4D;
-            padding: 13px 0;
-            @extend .body-txt;
-            color: #4D4D4D;
-            width: 100%;
-            background-color: transparent;
-            resize: none;
+          .form-row {
+            margin-bottom: 18px;
 
-            &.error {
-              color: #d41e07;
-              border-bottom: 1px solid #d41e07;
+            &.select-row {
+              position: relative;
 
-              &::placeholder {
-                color: #d41e07;
+              &:after {
+                content: '';
+                display: block;
+                width: 25px;
+                height: 13px;
+                background-image: url('../../images/arrow.svg');
+                background-repeat: no-repeat;
+                background-position: center center;
+                -webkit-background-size: contain;
+                background-size: contain;
+                position: absolute;
+                right: 0;
+                top: 0;
+                bottom: 0;
+                margin: auto;
+                pointer-events: none;
               }
             }
 
-            &:-webkit-autofill,
-            &:-webkit-autofill:hover,
-            &:-webkit-autofill:focus,
-            &:-webkit-autofill,
-            &:-webkit-autofill:hover,
-            &:-webkit-autofill:focus,
-            &:-webkit-autofill,
-            &:-webkit-autofill:hover,
-            &:-webkit-autofill:focus {
+            select {
+              -webkit-appearance: none;
+              cursor: pointer;
+            }
+
+            input,
+            textarea,
+            select {
               border: none;
               border-bottom: 1px solid #4D4D4D;
-              -webkit-text-fill-color: #4D4D4D;
-              -webkit-box-shadow: 0 0 0 1000px transparent inset;
-              transition: background-color 5000s ease-in-out 0s;
-            }
-
-            &::placeholder {
+              padding: 13px 0;
+              @extend .body-txt;
               color: #4D4D4D;
-              @extend %trans;
-            }
+              width: 100%;
+              background-color: transparent;
+              resize: none;
 
-            &:focus::-webkit-input-placeholder {
-              color: transparent;
-            }
+              &.error {
+                color: #d41e07;
+                border-bottom: 1px solid #d41e07;
 
-            &:focus:-moz-placeholder {
-              color: transparent;
-            }
+                &::placeholder {
+                  color: #d41e07;
+                }
+              }
 
-            /* FF 4-18 */
-            &:focus::-moz-placeholder {
-              color: transparent;
-            }
+              &:-webkit-autofill,
+              &:-webkit-autofill:hover,
+              &:-webkit-autofill:focus,
+              &:-webkit-autofill,
+              &:-webkit-autofill:hover,
+              &:-webkit-autofill:focus,
+              &:-webkit-autofill,
+              &:-webkit-autofill:hover,
+              &:-webkit-autofill:focus {
+                border: none;
+                border-bottom: 1px solid #4D4D4D;
+                -webkit-text-fill-color: #4D4D4D;
+                -webkit-box-shadow: 0 0 0 1000px transparent inset;
+                transition: background-color 5000s ease-in-out 0s;
+              }
 
-            /* FF 19+ */
-            &:focus:-ms-input-placeholder {
-              color: transparent;
-            }
-          }
-        }
-        .btn-row {
-          margin-top: 40px;
+              &::placeholder {
+                color: #4D4D4D;
+                @extend %trans;
+              }
 
-          button {
-            color: #ffffff;
-            max-width: 235px;
-            height: 50px;
-            width: 100%;
-            background-color: $blue;
-            padding-left: 15px;
-            cursor: pointer;
-            margin: 0 auto;
-            @extend .with-hover;
+              &:focus::-webkit-input-placeholder {
+                color: transparent;
+              }
 
-            .icon {
-              display: none;
-              width: 30px;
+              &:focus:-moz-placeholder {
+                color: transparent;
+              }
 
-              svg {
-                width: 100%;
-                height: auto;
+              /* FF 4-18 */
+              &:focus::-moz-placeholder {
+                color: transparent;
+              }
+
+              /* FF 19+ */
+              &:focus:-ms-input-placeholder {
+                color: transparent;
               }
             }
           }
+
+          .form-row.mobile-100 {
+            width: 50%;
+            float: left;
+
+          }
+
+          .form-fields > .form-row:nth-child(3) {
+            padding-right: 30px !important;
+          }
+
+
+          .btn-row {
+            margin-top: 40px;
+
+            button {
+              color: #ffffff;
+              max-width: 235px;
+              height: 50px;
+              width: 100%;
+              background-color: $blue;
+              padding-left: 15px;
+              cursor: pointer;
+              margin: 0 auto;
+              @extend .with-hover;
+
+              .icon {
+                display: none;
+                width: 30px;
+
+                svg {
+                  width: 100%;
+                  height: auto;
+                }
+              }
+            }
+        }
         }
       }
     }
@@ -1010,11 +1029,17 @@ html {
            position:relative;
            height:auto;
            transform: unset;
-           left:0;
+           left:-30px;
            top: -45px;
          }
          >div{
            max-width: 100% !important;
+         }
+         .form{
+           .form-row.mobile-100 {
+             width: 100%;
+             padding-right: 0 !important;
+           }
          }
        }
      }
