@@ -46,17 +46,21 @@ $pf = get_fields();
 						<?php foreach($of['menu'] as $menu):?>
 							<li class="menu-item">
 								<a href="javascript:;" data-section="<?php echo $menu['section']; ?>" class="section-menu-item"><?php echo $menu['name']?></a>
+                                <?php $services_list = new WP_Query(array('post_type' =>  'services', 'posts_per_page'    =>  -1, 'order'=>'ASC')); ?>
 								<?php if($menu['enable_services_menu']):?>
 									<ul class="services-menu">
-										<?php foreach($menu['services_menu'] as $submenu):?>
+										<?php foreach($services_list->posts as $service):?>
 											<li>
-												<a href="javascript:;" data-slide="<?php echo $submenu['slide_number']?>" class="slider-menu-item"><?php echo $submenu['name']; ?></a>
+												<a href="<?php echo get_permalink($service->ID); ?>"><?php echo $service->post_title; ?></a>
 											</li>
 										<?php endforeach;?>
 									</ul>
 								<?php endif;?>
 							</li>
 						<?php endforeach;?>
+                        <li class="menu-item">
+                           <a href="https://jtrain.brainstormtech.pro/concierge/" >Concierge</a>
+                        </li>
 					</ul>
 				</nav>
 			</div>

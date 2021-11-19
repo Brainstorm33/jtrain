@@ -785,10 +785,12 @@ html {
   .wrap{
     display: flex;
     justify-items: center;
+    margin-bottom:123px;
     .left-column{
       flex: 1 1 90%;
-      padding-top: 190px;
+      align-self: center;
       padding-right: 5%;
+      align-items: center;
       img{
 
       }
@@ -799,7 +801,7 @@ html {
         border-top: none;
         border-right: none;
         position: relative;
-        padding:190px 0 80px 160px;
+        padding:250px 0 80px 160px;
         font-weight: 400;
       h1{
         position: absolute;
@@ -819,7 +821,7 @@ html {
 
       .description {
         margin-bottom: 35px;
-        max-width: 640px;
+        max-width: 650px;
         p {
           @include res-font(14, 16);
         }
@@ -840,8 +842,16 @@ html {
               }
             }
           }
-
+          .form-fields{
+            opacity: 1;
+            display: block;
+          }
           &.success {
+            .form-fields{
+              display: none;
+              transition: opacity 1s ease-out;
+              opacity: 0;
+            }
             .success-info {
               display: block;
             }
@@ -849,9 +859,11 @@ html {
 
           .success-info {
             display: none;
-            padding-top: 12px;
-            color: $blue;
-            font-size: 14px;
+            margin-top: 44px;
+            margin-bottom: 54px;
+            p{
+              @include res-font(18,26)
+            }
           }
 
           .form-row {

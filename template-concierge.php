@@ -35,10 +35,10 @@ get_header();
                         <input type='text' placeholder='Property / Company Name' name='company' id='company'>
                     </div>
                     <div class="form-row">
-                        <textarea name="message" rows="5" placeholder="What kind of service you interested in? *" id="message"></textarea>
+                        <textarea name="message" rows="3" placeholder="What kind of service you interested in? *" id="message"></textarea>
                     </div>
                     <div class="btn-row">
-                        <button class="h6 flex fjc fac">
+                        <button class="h6 flex fjc fac" style="margin:0">
                             <span class="txt">SUBMIT</span>
                             <span class="icon"> <svg xmlns="http://www.w3.org/2000/svg"
                                                      xmlns:xlink="http://www.w3.org/1999/xlink"
@@ -56,9 +56,16 @@ get_header();
                                                 keyTimes="0;1"></animateTransform> </circle></span>
                         </button>
                     </div>
-                    <p class="success-info">
-                        Thank you! Your message has been sent successfully.
-                    </p>
+
+                </div>
+                <div class='success-info'>
+                    <p>Thank you for reaching out!</p>
+                    <p>We will be in touch soon.</p>
+                    <div class='btn-row'>
+                        <button class='h6 flex fjc fac' style="margin:0" onclick="location.href='<?php echo get_site_url(); ?>'">
+                            <span class='txt'>HOME</span>
+                        </button>
+                    </div>
                 </div>
             </form>
         </div>
@@ -66,7 +73,14 @@ get_header();
 </div>
     <script>
 jQuery(document).ready(function ($) {
-
+    jQuery('#menu-toggle').on('click', function () {
+        jQuery('body').toggleClass('menu-opened');
+        fullpage_api.setAllowScrolling(false);
+    });
+    jQuery('#header-nav .close, #overlay').on('click', function () {
+        jQuery('body').removeClass('menu-opened');
+        fullpage_api.setAllowScrolling(true);
+    });
     /* contact */
     $('input, textarea, select').on('input keypress change', function () {
         $(this).removeClass('error');

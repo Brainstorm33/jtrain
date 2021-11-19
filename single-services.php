@@ -277,27 +277,6 @@ $team_list = wp_get_post_terms($obj_id, 'team', array('fields' => 'all') );
     loadMap();
     jQuery(document).ready(function ($) {
 
-        // $('.services-menu a, #menu-item-233 a').attr('data-has-swup','');
-        //
-        // $('a').each(function (index) {
-        //     var attr = $(this).attr('data-has-swup');
-        //
-        //     if (typeof attr !== 'undefined' && attr !== false) {
-        //
-        //
-        //     } else {
-        //
-        //           $(this).attr('data-no-swup','');
-        //     }
-        //
-        // });
-        // const options = {
-        //     linkSelector:
-        //         'a[href^="' +
-        //         window.location.origin +
-        //         '"]:not([data-no-swup]), a[href^="/"]:not([data-no-swup]), a[href^="#"]:not([data-no-swup])'
-        // };
-        // const swup = new Swup(options);
 
         //end
         new Swiper('.service-slider-wrap', {
