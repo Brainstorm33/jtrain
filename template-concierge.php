@@ -20,25 +20,28 @@ get_header();
                 <div class='form-fields'>
                     <input type='hidden' class='token' name='token'  value="<?php echo wp_create_nonce( 'concierge_form' ); ?>">
                     <div class='form-row'>
-                        <input type='text' placeholder='Your Name' name='yourName' id='name'>
+                        <input type='text' name='yourName' id='name' placeholder=" ">
+                        <span class="placeholder" data-placeholder="Your Name"></span>
                     </div>
                     <div class='form-row mobile-100'>
-                        <input type='text' placeholder='E-Mail Address' name='email' id='email'>
+                        <input type='text' name='email' id='email' placeholder=" ">
+                        <span class="placeholder" data-placeholder="E-Mail Address"></span>
                     </div>
                     <div class='form-row mobile-100'>
                         <input type='text' placeholder='Phone' name='phone' id='phone'>
                     </div>
-                    <div class='form-row'>
+                    <div class='form-row clean'>
                         <input type='text' placeholder='Building Address' name='building_address' id='building_address'>
                     </div>
                     <div class='form-row'>
                         <input type='text' placeholder='Property / Company Name' name='company' id='company'>
                     </div>
                     <div class="form-row">
-                        <textarea name="message" rows="3" placeholder="What kind of service you interested in? *" id="message"></textarea>
+                        <textarea name="message" rows="3" id="message" placeholder=" "></textarea>
+                        <span class="placeholder" data-placeholder="What kind of service you interested in?"></span>
                     </div>
                     <div class="btn-row">
-                        <button class="h6 flex fjc fac" style="margin:0">
+                        <button class="h6 flex fjc fac">
                             <span class="txt">SUBMIT</span>
                             <span class="icon"> <svg xmlns="http://www.w3.org/2000/svg"
                                                      xmlns:xlink="http://www.w3.org/1999/xlink"
@@ -110,15 +113,15 @@ jQuery(document).ready(function ($) {
         if (name.val().trim() == '') {
             errors.push(name)
         }
-        if (phone.val().trim() == '') {
-            errors.push(phone)
-        }
-        if (company.val().trim() == '') {
-            errors.push(company)
-        }
-        if (building_address.val().trim() == '') {
-            errors.push(company)
-        }
+        // if (phone.val().trim() == '') {
+        //     errors.push(phone)
+        // }
+        // if (company.val().trim() == '') {
+        //     errors.push(company)
+        // }
+        // if (building_address.val().trim() == '') {
+        //     errors.push(company)
+        // }
         if (message.val().trim() == '') {
             errors.push(message)
         }
