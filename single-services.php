@@ -8,7 +8,38 @@ $current_url = get_permalink( $obj_id );
 $service_data = get_fields();
 $team_list = wp_get_post_terms($obj_id, 'team', array('fields' => 'all') );
 ?>
-<div class="single-service-wrap">
+<style>
+    /*#swup{*/
+    /*    overflow: hidden;*/
+    /*}*/
+
+    .transition-fade {
+        transition: all 500ms cubic-bezier(0.005, 0.235, 0.475, 0.810); /* custom */
+
+        transition-timing-function: cubic-bezier(0.005, 0.235, 0.475, 0.810); /* custom */
+        transform: translateX(0);
+    }
+
+
+    html.is-animating .transition-fade{
+        transform: translateX(100%);
+
+    }
+
+    html.is-changing .transition-fade{
+        /* CSS styles when changing  */
+    }
+
+    html.is-leaving .transition-fade{
+        transform: translateX(-100%);
+
+    }
+
+    html.is-rendering .transition-fade{
+
+    }
+</style>
+<div id="swup" class="single-service-wrap" style="overflow:hidden">
 	<section  class='hero-section video-desc-wrap'>
 		<div class='rectangle'>
 			<div></div>
@@ -32,8 +63,8 @@ $team_list = wp_get_post_terms($obj_id, 'team', array('fields' => 'all') );
 						</ul>
 					</div>
 					<div class="transition-fade  video-desc">
-						<div class="video">
-							<video muted='' webkit-playsinline='' autoplay='' loop='' playsinline=''
+						<div class="video ">
+							<video id="video" muted='' webkit-playsinline='' autoplay='false' loop='' playsinline=''
 							       poster='<?php echo $service_data["video_cover_photo"]; ?>'
 							       data-autoplay=''>
 								<source
@@ -57,13 +88,13 @@ $team_list = wp_get_post_terms($obj_id, 'team', array('fields' => 'all') );
 			</div>
 		</div>
 	</section>
-	<section class='hero-section team-wrap transition-fade'>
+	<section class='hero-section team-wrap'>
 		<div class='rectangle'>
-			<h2 class='team-title'  style="z-index:9999"><?php echo $service_data['title_team_section'] ?? $service_data['title_team_section'];  ?></h2>
+			<h2 class='transition-fade  team-title'  style="z-index:9999"><?php echo $service_data['title_team_section'] ?? $service_data['title_team_section'];  ?></h2>
 			<div></div>
 		</div>
 		<div>
-			<div class='inner-holder flex fac fjc pr2'>
+			<div class='transition-fade inner-holder flex fac fjc pr2'>
 				<div class='info-holder flex fdc'>
 					<div class="team-description">
 						<p>
@@ -102,7 +133,7 @@ $team_list = wp_get_post_terms($obj_id, 'team', array('fields' => 'all') );
 		</div>
 	</section>
 	<?php if($service_data['has_slider'] == true){ ?>
-    <section  class="slider-fulldesc transition-fade ">
+    <section  class="transition-fade slider-fulldesc transition-fade ">
 		<div class="slider">
             <div class='service-slider-wrap swiper'>
                 <div class='service-slider-swiper swiper-wrapper'>
@@ -249,7 +280,11 @@ $team_list = wp_get_post_terms($obj_id, 'team', array('fields' => 'all') );
         </div>
     </section>
 </div>
+
 <script>
+
+
+
     var map;
 
     function loadMap() {
@@ -276,7 +311,34 @@ $team_list = wp_get_post_terms($obj_id, 'team', array('fields' => 'all') );
 
     loadMap();
     jQuery(document).ready(function ($) {
+        // video = document.getElementById('video');
+        //
+        // if (video.readyState === 4) {
+        //     console.log('loaded');
+        // }
+        $('.services-menu a, #menu-item-233 a').attr('data-has-swup', '');
+        //page transition
+        $('a').each(function (index) {
+            var attr = $(this).attr('data-has-swup');
 
+            if (typeof attr !== 'undefined' && attr !== false) {
+
+                // console.log('have data-has-swup');
+
+            } else {
+                // console.log('not have');
+                $(this).attr('data-no-swup', '');
+            }
+
+        });
+        const options = {
+            linkSelector:
+                'a[href^="' +
+                window.location.origin +
+                '"]:not([data-no-swup]), a[href^="/"]:not([data-no-swup]), a[href^="#"]:not([data-no-swup])',
+            cache: true,
+        };
+        const swup = new Swup(options);
 
         //end
         new Swiper('.service-slider-wrap', {
@@ -295,11 +357,11 @@ $team_list = wp_get_post_terms($obj_id, 'team', array('fields' => 'all') );
         });
 
         $('.services-menu > ul > li').each(function (index) {
-            $(this).width($(this).width() + 20);
+            $(this).width($(this).width() + 50);
         });
        window.addEventListener('resize', function(event){
             $('.services-menu > ul > li').each(function (index) {
-                $(this).width($(this).width() + 20);
+                $(this).width($(this).width() + 50);
             });
         });
 
@@ -374,11 +436,5 @@ $team_list = wp_get_post_terms($obj_id, 'team', array('fields' => 'all') );
         jQuery('body').removeClass('menu-opened');
         fullpage_api.setAllowScrolling(true);
     });
-
-
-
-
-
-
 </script>
 <?php get_footer(); ?>

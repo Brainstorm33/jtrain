@@ -324,7 +324,7 @@ html {
           }
           h1{
             font-family: "Monument Extended";
-            @include res-font(24,64);
+            @include res-font(24,63);
             position: absolute;
             z-index: 99;
             bottom: 0%;

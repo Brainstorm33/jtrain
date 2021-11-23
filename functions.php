@@ -7,6 +7,7 @@ require_once 'inc/admin-pages/submissons.php';
 require_once 'inc/styles-scripts.php';
 require_once 'inc/wp-changes.php';
 require_once 'inc/ajax.php';
+require_once 'woocommerce/woo-functions.php';
 
 add_filter( 'show_admin_bar', '__return_false' );
 
@@ -50,12 +51,15 @@ function sk_theme_setup() {
 		'menu-1' => esc_html__( 'Primary', '7thelabel' ),
 		'services' => esc_html__( 'Services', '7thelabel' ),
         'top-menu'=> esc_html__( 'Top menu', 'jtrain' ),
+        'shop-menu'=> esc_html__( 'Shop menu', 'jtrain' ),
 	) );
 
 	add_action( 'init', 'my_add_excerpts_to_pages' );
 	function my_add_excerpts_to_pages() {
 		add_post_type_support( 'page', 'excerpt' );
 	}
+
+      add_theme_support( 'woocommerce' ); // <<<< here
 }
 
 function remove_menus() {
@@ -147,3 +151,15 @@ function wpse121123_contact_menu_atts( $atts, $item, $args )
 //   return var_dump($item);
   return $atts;
 }
+
+// Downgrade to jQuery given version
+function downgrade_jquery() {
+  global $wp_scripts;
+
+  // We want to use version 1.8.3 of jQuery, but it may break something in the admin so we only load it on the actual site.
+  if ( !is_admin() ) :
+    wp_deregister_script('jquery');
+//    wp_register_script('jquery', '//ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js', '', '', false);
+  endif;
+}
+add_action( 'wp_head', downgrade_jquery() );
