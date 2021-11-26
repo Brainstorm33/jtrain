@@ -1,6 +1,87 @@
 body{
   .shop-container{
     max-width:1340px;
-    margin:100px auto 0;
+    margin:220px auto 0;
+    .menu-shop-menu-container{
+        padding: 56px 0 100px 0;
+
+        ul {
+          display: flex;
+          justify-content: space-between;
+          max-width: 1035px;
+          margin: 0 auto;
+
+          li {
+            padding-bottom: 10px;
+            margin-bottom: 10px;
+            text-align: center;
+
+            a {
+              text-transform: uppercase;
+              border-bottom: 4px solid transparent;
+              //transition: border-color 0.6s linear;
+              padding-bottom: 10px;
+              //letter-spacing: 1px;
+              //display:inline-block;
+              //width:calc(100% + 5px);
+              transition: all 0.3s;
+            }
+
+
+          }
+
+          li:hover,
+          li.active {
+            a {
+              font-weight: bold;
+              padding-bottom: 10px;
+              border-bottom: 4px solid #0057FF;
+              //letter-spacing: 0px;
+            }
+
+            padding-bottom: 10px;
+
+          }
+        }
+    }
+    .products-wrap{
+      .products{
+        display: grid;
+        grid-template-columns: 356px 356px 356px;
+        justify-content: space-between;
+        grid-gap: 100px;
+        .product{
+          text-align: center;
+          a{
+            display:grid;
+            grid-template-areas:
+            "images images"
+            "title price";
+            cursor:pointer;
+            .img-wrap{
+              grid-area: images;
+              width:100%;
+              height: auto;
+              margin-bottom: 5px;
+              background: radial-gradient(140.32% 162.08% at 67.28% 162.08%, #0057FF 40.61%, rgba(0, 87, 255, 0) 100%);
+              padding: 37px;
+            }
+            .woocommerce-loop-product__title{
+              grid-area:title;
+              @include res-font(15,22);
+              text-align: left;
+            }
+            .price{
+              grid-area: price;
+               @include res-font(15,22);
+               text-align: left;
+              bdi{
+                float:right;
+              }
+            }
+          }
+        }
+      }
+    }
   }
 }

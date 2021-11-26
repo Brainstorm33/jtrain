@@ -1,9 +1,9 @@
 <?php get_header(); ?>
 <div class="shop-container">
-    <div class="shop-menu">
-        
-    </div>
-    <div class="products">
+    <?php
+    wp_nav_menu('shop-menu');
+    ?>
+    <div class="products-wrap">
         <?php
       if ( woocommerce_product_loop() ) {
 

@@ -152,6 +152,9 @@ jQuery(document).ready(function ($) {
                         self[0].reset();
                         self.addClass('success');
                         self.removeClass('loading');
+
+                        $('#home-fullpage > .wrap').css('height','100vh');
+                        $('#home-fullpage > .wrap > .right-column').css('margin-bottom','70px');
                     }
                 },
                 error: function (err) {

@@ -12,7 +12,9 @@ $pf = get_fields();
 	<meta name="theme-color" content="#12A0FF">
 	<meta name="apple-mobile-web-app-status-bar-style" content="#12A0FF">
 	<link rel="profile" href="http://gmpg.org/xfn/11">
-<script src="//ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.10/jquery.mask.js"></script>
+
 
 	<?php wp_head(); ?>
 </head>
