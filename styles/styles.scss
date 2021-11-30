@@ -3102,3 +3102,29 @@ body {
 
 @import "parts/landing";
 @import "parts/shop";
+
+.transition-fade {
+    transition: all 500ms cubic-bezier(0.005, 0.235, 0.475, 0.810); /* custom */
+
+    transition-timing-function: cubic-bezier(0.005, 0.235, 0.475, 0.810); /* custom */
+    transform: translateX(0);
+}
+
+
+html.is-animating .transition-fade {
+    transform: translateX(100%);
+
+}
+
+html.is-changing .transition-fade {
+    /* CSS styles when changing  */
+}
+
+html.is-leaving .transition-fade {
+    transform: translateX(-100%);
+
+}
+
+html.is-rendering .transition-fade {
+
+}

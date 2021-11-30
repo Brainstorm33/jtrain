@@ -133,6 +133,15 @@
     font-style: normal;
 }
 
+@font-face {
+    font-family: 'BebasKai';
+    src: local('BebasKai Bold'), local('BebasKai-Bold'),
+    url('fonts/BebasKai-Bold.woff2') format('woff2'),
+    url('fonts/BebasKai-Bold.woff') format('woff');
+    font-weight: bold;
+    font-style: normal;
+}
+
 body {
     font-family: "GT America";
     font-size: 20px;

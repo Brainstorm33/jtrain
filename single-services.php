@@ -8,37 +8,6 @@ $current_url = get_permalink( $obj_id );
 $service_data = get_fields();
 $team_list = wp_get_post_terms($obj_id, 'team', array('fields' => 'all') );
 ?>
-<style>
-    /*#swup{*/
-    /*    overflow: hidden;*/
-    /*}*/
-
-    .transition-fade {
-        transition: all 500ms cubic-bezier(0.005, 0.235, 0.475, 0.810); /* custom */
-
-        transition-timing-function: cubic-bezier(0.005, 0.235, 0.475, 0.810); /* custom */
-        transform: translateX(0);
-    }
-
-
-    html.is-animating .transition-fade{
-        transform: translateX(100%);
-
-    }
-
-    html.is-changing .transition-fade{
-        /* CSS styles when changing  */
-    }
-
-    html.is-leaving .transition-fade{
-        transform: translateX(-100%);
-
-    }
-
-    html.is-rendering .transition-fade{
-
-    }
-</style>
 <div id="swup" class="single-service-wrap" style="overflow:hidden">
 	<section  class='hero-section video-desc-wrap'>
 		<div class='rectangle'>
@@ -133,7 +102,7 @@ $team_list = wp_get_post_terms($obj_id, 'team', array('fields' => 'all') );
 		</div>
 	</section>
 	<?php if($service_data['has_slider'] == true){ ?>
-    <section  class="transition-fade slider-fulldesc transition-fade ">
+    <section  class="slider-fulldesc transition-fade ">
 		<div class="slider">
             <div class='service-slider-wrap swiper'>
                 <div class='service-slider-swiper swiper-wrapper'>
