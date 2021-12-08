@@ -151,15 +151,3 @@ function wpse121123_contact_menu_atts( $atts, $item, $args )
 //   return var_dump($item);
   return $atts;
 }
-
-// Downgrade to jQuery given version
-function downgrade_jquery() {
-  global $wp_scripts;
-
-  // We want to use version 1.8.3 of jQuery, but it may break something in the admin so we only load it on the actual site.
-  if ( !is_admin() ) :
-    wp_deregister_script('jquery');
-//    wp_register_script('jquery', '//ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js', '', '', false);
-  endif;
-}
-add_action( 'wp_head', downgrade_jquery() );
