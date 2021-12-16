@@ -224,7 +224,6 @@ body {
 
               img {
                 height: auto;
-                max-height: 282px;
                 //max-width: 282px;
                 width: auto;
               }
@@ -382,6 +381,9 @@ body {
             background: radial-gradient(136.5% 156.89% at 63.13% 156.89%, #0057ff 40.61%, rgba(0, 87, 255, 0) 92.91%);
             padding: 0;
             margin: 0;
+            img{
+              max-height: 2;
+            }
             .iconic-woothumbs-icon-left-open-mini{
               height: 48px;
               &:before {

@@ -356,6 +356,116 @@ html {
       @media only screen and (max-width: 980px) {
         padding-top:50px;
       }
+
+      .slider {
+        max-width: 100%;
+        overflow: hidden;
+
+        .service-slider-wrap {
+          position: relative;
+          margin: 105px 0 0;
+          padding: 0 140px;
+          .service-slider-swiper {
+            height: 400px;
+            .swiper-slide {
+              height:100%;
+              cursor: pointer;
+              width: auto ;
+
+              img {
+                max-height: 100%;
+                height: 100%;
+                width: auto;
+              }
+            }
+
+
+          }
+
+          .swiper-button-prev {
+            z-index: 50;
+            left:50px;
+            width: 43px;
+            height:85px;
+            background-size:contain;
+            margin-top: -42px;
+          }
+
+          .swiper-button-next {
+            z-index: 50;
+            right:50px;
+            width: 43px;
+            height:85px;
+            background-size:contain;
+            margin-top: -42px;
+          }
+        }
+
+        .service-slider-wrap:before {
+          content: '';
+          background: linear-gradient(90deg, #000000 0%, rgba(0, 0, 0, 0) 100%);
+          position: absolute;
+          left: 0;
+          top: 0;
+          height: 100%;
+          width: 340px;
+          z-index: 15;
+              pointer-events: none;
+        }
+
+        .service-slider-wrap:after {
+          content: '';
+          background: linear-gradient(90deg, #000000 0%, rgba(0, 0, 0, 0) 100%);
+          transform: rotate(-180deg);
+          position: absolute;
+          right: 0;
+          top: 0;
+          height: 100%;
+          width: 340px;
+          z-index: 15;
+              pointer-events: none;
+        }
+        .paginate {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          width: 184px;
+          height: 24px;
+          position: relative;
+          margin: 64px auto 0;
+
+          .swiper-button-prev,
+          .swiper-button-next {
+            height: 24px;
+            width: 12px;
+            background-size: 100% 100%;
+            margin: 0;
+            top: 0;
+          }
+
+          .swiper-pagination {
+            display: flex;
+            align-items: center;
+
+
+            .swiper-pagination-bullet:not(.swiper-pagination-bullet-active) {
+              border: 1px solid white;
+            }
+
+            .swiper-pagination-bullet {
+              margin: 0 20px;
+            }
+
+
+            .swiper-pagination-bullet-active {
+              width: 13px;
+              height: 13px;
+              background-color: #0057FF;
+            }
+          }
+        }
+
+      }
       .rectangle{
         bottom:0;
         width: calc(100% - 134px);
@@ -367,11 +477,17 @@ html {
       }
       .inner-holder{
         padding-top: 0;
+
+
         .team-description{
-          padding: 70px 0 50px 0;
+          padding: 135px 0 50px 0;
           text-align:center;
           max-width: 802px;
           margin:0 auto;
+          h2{
+            font-size: 22px;
+            margin: 0 0 32px 0;
+          }
           @media only screen and (max-width: 980px) {
             margin:0 !important;
           }
@@ -379,8 +495,7 @@ html {
 
         .full-description {
           > div {
-            max-width: 572px;
-            margin-left: 132px;
+            max-width: 922px;
             text-align: center;
             margin: 0 auto;
             h3 {
@@ -397,82 +512,30 @@ html {
             }
           }
         }
-      }
-    }
-    .slider-fulldesc{
-      display: flex;
-      //align-items: center;
 
-      margin-top:167px;
-      >div{
-        flex:1;
-      }
-      .slider{
-        max-width: 844px;
-        overflow: hidden;
-        .paginate{
+        .slider-fulldesc {
           display: flex;
-          justify-content: center;
-          align-items: center;
-          width:184px;
-          height:24px;
-          position:relative;
-          margin:64px auto 0;
+          //align-items: center;
 
-          .swiper-button-prev,
-          .swiper-button-next {
-            height: 24px;
-            width: 12px;
-            background-size: 100% 100%;
-            margin: 0;
-            top: 0;
+          margin-top: 167px;
+
+          > div {
+            flex: 1;
           }
-          .swiper-pagination{
-            display: flex;
-            align-items: center;
 
+          .full-description:not(.has-slider) {
+            text-align: center;
 
-              .swiper-pagination-bullet:not(.swiper-pagination-bullet-active) {
-                border: 1px solid white;
-              }
-
-              .swiper-pagination-bullet {
-                margin: 0 20px;
-              }
-
-
-            .swiper-pagination-bullet-active{
-              width:13px;
-              height:13px;
-              background-color:#0057FF;
+            > div {
+              max-width: 678px;
+              margin: 0 auto;
             }
           }
-        }
 
-      }
-      .full-description{
-        > div {
-          max-width: 572px;
-          margin-left: 132px;
-          padding:33px 0;
-          h3{
-            font-size: 22px;
-            margin:0 0 32px 0;
-          }
-          p{
-            margin-bottom: 25px;
-          }
         }
       }
-      .full-description:not(.has-slider){
-        text-align: center;
-        >div{
-          max-width: 678px;
-         margin:0 auto;
-        }
-      }
-
     }
+
   .contact-services{
     margin-top:130px;
   }
@@ -562,6 +625,49 @@ html {
       bottom: unset;
     }
   }
+
+  div#service-gallery {
+    margin-bottom: 100px;
+  }
+
+  .service-slider-wrap{
+    padding:0 !important;
+    height: auto !important;
+    .swiper-slide{
+      width:100% !important;
+      padding:0 54px;
+      height: auto !important;
+      img{
+        width: 100% !important;
+        height: auto !important;
+
+      }
+    }
+    .swiper-button-blue {
+      bottom: 0px !important;
+      margin: 0 !important;
+      width: 12px !important;
+      height: 24px !important;
+      &::after{
+        font-size: 25px;
+      }
+    }
+
+    .swiper-pagination.swiper-pagination-bullets {
+      position: absolute;
+    }
+    .swiper-button-blue,
+    .swiper-pagination.swiper-pagination-bullets{
+      top: unset !important;
+      bottom: 40px !important;
+    }
+    &:before,
+    &:after
+    {
+      content:none !important;
+    }
+  }
+
 }
  .logo {
    height: auto !important;

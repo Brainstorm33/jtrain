@@ -58,14 +58,33 @@ $team_list = wp_get_post_terms($obj_id, 'team', array('fields' => 'all') );
 		</div>
 	</section>
 	<section class='hero-section team-wrap'>
+		<?php if ( $service_data['has_slider'] == true ) { ?>
+            <div class="slider">
+                <div class='service-slider-wrap swiper'>
+                    <div class='service-slider-swiper swiper-wrapper' id="service-gallery">
+						<?php foreach ( $service_data['slider'] as $slide_image ) { ?>
+                                <div data-src="<?php echo $slide_image['url']; ?>"  class="swiper-slide " data-lightbox="roadtrip">
+                                    <img src="<?php echo $slide_image['url']; ?>" alt="">
+                                </div>
+						<?php } ?>
+                    </div>
+                    <div class='swiper-button-prev swiper-button-blue'></div>
+                    <div class='swiper-pagination'></div>
+                    <div class='swiper-button-next swiper-button-blue'></div>
+                </div>
+            </div>
+		<?php } ?>
 		<div class='rectangle'>
-			<h2 class='transition-fade  team-title'  style="z-index:9999"><?php echo $service_data['title_team_section'] ?? $service_data['title_team_section'];  ?></h2>
+
 			<div></div>
 		</div>
 		<div>
 			<div class='transition-fade inner-holder flex fac fjc pr2'>
 				<div class='info-holder flex fdc'>
+
 					<div class="team-description">
+                        <h2 class='transition-fade  team-title'
+                            style='z-index:9999'><?php echo $service_data['title_team_section'] ?? $service_data['title_team_section']; ?></h2>
 						<p>
 							<?php if ( $service_data['description_team_section'] ){ ?><?php echo $service_data['description_team_section'] ?? $service_data['description_team_section']; ?><?php } ?>
 						</p>
@@ -88,45 +107,22 @@ $team_list = wp_get_post_terms($obj_id, 'team', array('fields' => 'all') );
 							<?php } ?>
 						</div>
 					</div>
-                    <?php if($service_data['has_slider'] == false){ ?>
-	                    <?php if ( $service_data['full_description'] ) { ?>
-                            <div class="full-description <?= ( $service_data['has_slider'] ) ? 'has-slider' : '' ?>">
-                                <div>
-				                    <?php echo $service_data['full_description']; ?>
-                                </div>
+					<?php if ( $service_data['full_description'] ) { ?>
+                        <div class="full-description ">
+                            <div>
+								<?php echo $service_data['full_description']; ?>
                             </div>
-	                    <?php } ?>
-                    <?php } ?>
+                        </div>
+					<?php } ?>
 				</div>
 			</div>
 		</div>
 	</section>
-	<?php if($service_data['has_slider'] == true){ ?>
-    <section  class="slider-fulldesc transition-fade ">
-		<div class="slider">
-            <div class='service-slider-wrap swiper'>
-                <div class='service-slider-swiper swiper-wrapper'>
-					<?php foreach ( $service_data['slider'] as $slide_image ) { ?>
-                        <div class='swiper-slide'><img src="<?php echo $slide_image['url']; ?>" alt=""></div>
-					<?php } ?>
-                </div>
-                <div class="paginate">
-                    <div class='swiper-button-prev swiper-button-white'></div>
-                    <div class='swiper-pagination'></div>
-                    <div class='swiper-button-next swiper-button-white'></div>
-                </div>
-            </div>
-        </div>
 
-		<?php if ( $service_data['full_description'] ){ ?>
-        <div class="full-description <?=($service_data['has_slider']) ? 'has-slider' : ''?>">
-           <div>
-	           <?php echo $service_data['full_description']; ?>
-           </div>
-		</div>
-        <?php } ?>
+    <section  class="slider-fulldesc transition-fade ">
+
 	</section>
-	<?php } ?>
+
     <section class='contact-section contact-services'>
         <div class='section-wrp flex pr2'>
             <div class='inner-holder flex '>
@@ -191,7 +187,7 @@ $team_list = wp_get_post_terms($obj_id, 'team', array('fields' => 'all') );
                 <div class="right-col flex fdc">
                     <div class="info-holder tac">
                             <h4 class="h4 location">
-								505 Greenwich St., New York аа
+								505 Greenwich St., New York
                             </h4>
                         <div class="socials flex fjc fac">
 							<?php if ( $pf['instagram_url'] ): ?>
@@ -251,152 +247,6 @@ $team_list = wp_get_post_terms($obj_id, 'team', array('fields' => 'all') );
 </div>
 
 <script>
-
-
-
-    var map;
-
-    function loadMap() {
-        const place = {
-            lat: 40.7256262,
-            lng: -74.0087898
-        };
-        map = new google.maps.Map(document.getElementById('map'), {
-            center: place,
-            zoom: 17,
-            mapId: '5973d810e21cb52d'
-        });
-
-        const marker = new google.maps.Marker({
-            position: place,
-            map: map,
-            icon: {
-                //    anchor: new google.maps.Point(69, 104),
-                size: new google.maps.Size(69, 104),
-                url: 'https://jtrain.brainstormtech.pro/wp-content/themes/jtrain/images/map-marker.svg'
-            }
-        });
-    }
-
-    loadMap();
-    jQuery(document).ready(function ($) {
-        // video = document.getElementById('video');
-        //
-        // if (video.readyState === 4) {
-        //     console.log('loaded');
-        // }
-        $('.services-menu a, #menu-item-233 a').attr('data-has-swup', '');
-        //page transition
-        $('a').each(function (index) {
-            var attr = $(this).attr('data-has-swup');
-
-            if (typeof attr !== 'undefined' && attr !== false) {
-
-                // console.log('have data-has-swup');
-
-            } else {
-                // console.log('not have');
-                $(this).attr('data-no-swup', '');
-            }
-
-        });
-        const options = {
-            linkSelector:
-                'a[href^="' +
-                window.location.origin +
-                '"]:not([data-no-swup]), a[href^="/"]:not([data-no-swup]), a[href^="#"]:not([data-no-swup])',
-            cache: true,
-        };
-        const swup = new Swup(options);
-
-        //end
-        new Swiper('.service-slider-wrap', {
-            slidesPerView: 'auto',
-            spaceBetween: 0,
-            speed:1500,
-            autoplay:5000,
-            pagination: {
-                el: '.swiper-pagination',
-                clickable: true,
-            },
-            navigation: {
-                nextEl: '.swiper-button-next',
-                prevEl: '.swiper-button-prev',
-            },
-        });
-
-        $('.services-menu > ul > li').each(function (index) {
-            $(this).width($(this).width() + 50);
-        });
-       window.addEventListener('resize', function(event){
-            $('.services-menu > ul > li').each(function (index) {
-                $(this).width($(this).width() + 50);
-            });
-        });
-
-        $('#contact-form').on('submit', function (e) {
-            e.preventDefault();
-
-            if ($(this).hasClass('loading')) {
-                return false;
-            }
-            const self = $(this),
-                name = $(`#name`, this),
-                email = $(`#email`, this),
-                phone = $(`#phone`, this),
-                service = $(`#service`, this),
-                message = $(`#message`, this),
-                emailRegex = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|('.+'))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
-                errors = [];
-
-            if (name.val().trim() == '') {
-                errors.push(name)
-            }
-            if (phone.val().trim() == '') {
-                errors.push(phone)
-            }
-            if (service.val().trim() == '') {
-                errors.push(service)
-            }
-            if (message.val().trim() == '') {
-                errors.push(message)
-            }
-            if (!emailRegex.test(String(email.val().toLowerCase()))) {
-                errors.push(email)
-            }
-
-            if (errors.length != 0) {
-                for (var i = 0; i < errors.length; i++) {
-                    errors[i].addClass(`error`);
-                }
-            } else {
-                var fd = new FormData(this);
-                fd.append('action', 'contact_form');
-                console.log(fd);
-                $.ajax({
-                    url: ajax.url,
-                    type: 'POST',
-                    contentType: false,
-                    processData: false,
-                    data: fd,
-                    beforeSend: function () {
-                        self.addClass('loading');
-                    },
-                    success: function (data) {
-                        if (data.success) {
-                            self[0].reset();
-                            self.addClass('success');
-                            self.removeClass('loading');
-                        }
-                    },
-                    error: function (err) {
-                    }
-                });
-            }
-
-        });
-    });
-
     jQuery('#menu-toggle').on('click', function () {
         jQuery('body').toggleClass('menu-opened');
         fullpage_api.setAllowScrolling(false);

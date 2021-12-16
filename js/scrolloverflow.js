@@ -2486,7 +2486,7 @@
                 if(!iscrollHandler.hasBeenInit){
                     return;
                 }
-                var scrollable = fp_utils.closest(target, SCROLLABLE_SEL) || $(SCROLLABLE_SEL, target)[0];
+                var scrollable = fp_utils.closest(target, SCROLLABLE_SEL);
                 var action = enable ? 'enable' : 'disable';
 
                 if(scrollable){
