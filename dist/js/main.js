@@ -1,12 +1,14 @@
 /*! gocdj - 20-07-2021 */
 jQuery(document).ready(function ($) {
 
+
+    // }
     function setHeight(selector, varname) {
         selector.length && document.documentElement.style.setProperty(`--${varname}`, `${selector.outerHeight()}px`);
     }
     setHeight($(window), "vh"),
         setHeight($("#header"), "hh"),
-        $(window).on("resize", function () {
+        $(window).on("resize", function  () {
             setHeight($(window), "vh"), setHeight($("#header"), "hh");
         }),
         $("input").on("input", function () {
@@ -77,6 +79,38 @@ jQuery(document).ready(function ($) {
             },
         }),
         fullpage_api.setAllowScrolling(!1);
+    // if (window.location.search > 0) {
+    const queryString = window.location.search;
+    const urlParams = new URLSearchParams(queryString);
+
+    let target = urlParams.get('target');
+    // fullpage_api.moveTo(2); // what is jtrain
+    // fullpage_api.moveTo(4); // services
+    // fullpage_api.moveTo(7); // simulated by art
+    // fullpage_api.moveTo(9); // what do people say
+    // fullpage_api.moveTo(10); // train with us
+
+    setTimeout(function () {
+            switch (target) {
+                case 'what-is-jtrain':
+                    fullpage_api.moveTo(2);
+                    break;
+                case 'our-services':
+                    fullpage_api.moveTo(4);
+                    break;
+                case 'stimulated-by-art':
+                    fullpage_api.moveTo(8);
+                    break;
+                case 'what-do-people-say':
+                    fullpage_api.moveTo(10);
+                    break;
+                case 'become-a-member':
+                    fullpage_api.moveTo(11);
+                    break;
+                default:
+                    console.log('Nothing!');
+            }
+    }, 3000);
     var perfData = window.performance.timing,
         EstimatedTime = -(perfData.loadEventEnd - perfData.navigationStart),
         time = 100 * parseInt((EstimatedTime / 1e3) % 60);

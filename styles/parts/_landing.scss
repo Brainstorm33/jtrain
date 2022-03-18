@@ -186,7 +186,7 @@ html {
    text-align:center;
    h1 {
     @include res-font(24,64);
-     font-family: "Monumenall-team-sectiont Extended";
+     font-family: 'Monument Extended';
    }
 
    .subtitle {
@@ -256,6 +256,10 @@ html {
       }
       .services-menu{
         padding: 56px 0 100px 0;
+
+        @media only screen and (max-width:980px){
+          padding: 56px 0 35px 0;
+        }
         ul{
           display: flex;
           justify-content: space-between;
@@ -360,11 +364,25 @@ html {
       .slider {
         max-width: 100%;
         overflow: hidden;
-
+        @media only screen and (max-width: 980px){
+          .info {
+            display:block !important;
+            p {
+              text-align: center;
+              font-size: 14px;
+              color: #5E5E5E;
+              margin-top:-15px;
+              margin-bottom:50px;
+            }
+          }
+        }
         .service-slider-wrap {
           position: relative;
-          margin: 105px 0 0;
+          margin: 105px 0 25px 0;
           padding: 0 140px;
+          @media only screen and (max-width: 980px) {
+            margin-top: 0px;
+          }
           .service-slider-swiper {
             height: 400px;
             .swiper-slide {
@@ -650,16 +668,34 @@ html {
       height: 24px !important;
       &::after{
         font-size: 25px;
+        color:#fff !important;
       }
     }
 
     .swiper-pagination.swiper-pagination-bullets {
       position: absolute;
+      bottom: 5px !important;
     }
     .swiper-button-blue,
     .swiper-pagination.swiper-pagination-bullets{
       top: unset !important;
-      bottom: 40px !important;
+      bottom: 40px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      .swiper-pagination-bullet.swiper-pagination-bullet-active {
+        width: 13px;
+        height: 13px;
+      }
+
+      .swiper-pagination-bullet:not(.swiper-pagination-bullet-active) {
+        width: 7px;
+        height: 7px;
+        border: 1px solid #5E5E5E;
+        margin: 0 6px !important;
+        opacity:1;
+      }
     }
     &:before,
     &:after
@@ -859,7 +895,9 @@ html {
   }
 
 }
-
+#wcspc-count{
+  display:none;
+}
 //.transition-fade {
 //  transition: all 600ms cubic-bezier(0.420, 0.000, 0.580, 1.000); /* ease-in-out */
 //

@@ -62,54 +62,95 @@ $cats = get_terms( array(
 ?>
 
     <style>
+        div[data-swatch_type='color'] .vi-wpvs-variation-wrap {
+            height: 75px;
+        }
+
+        div[data-swatch_type="color"] .vi-wpvs-option-wrap.vi-wpvs-option-wrap {
+            transition: all .8s ease-in-out!important;
+        }
+        div[data-swatch_type="color"] .vi-wpvs-option-wrap.vi-wpvs-option-wrap {
+            background: none !important;
+            box-shadow: none !important;
+            width: 48px;
+            height: 48px;
+            margin-top: 0;
+            margin-bottom: 0;
+            padding:0 !important;
+        }
+
+        div[data-swatch_type='color'] .vi-wpvs-option-wrap.vi-wpvs-option-wrap-hover{
+            box-shadow: none;
+            height: 48px;
+            width: 48px;
+            margin-top: 0;
+            margin-bottom: 0;
+            padding:0 !important;
+        }
+        div[data-swatch_type="color"] .vi-wpvs-option-wrap.vi-wpvs-option-wrap-selected {
+            box-shadow: none !important;
+            height: 64px;
+            width: 64px;
+            margin-top: 0;
+            margin-bottom: 0;
+            padding:0 !important;
+        }
+
+        div[data-swatch_type="color"] .vi-wpvs-option-wrap.vi-wpvs-option-wrap-selected span {
+            width: 100% !important;
+            height: 100% !important;
+        }
+
+        div[data-swatch_type="color"] .vi-wpvs-variation-wrap {
+            align-items: center;
+        }
+
+         /*div[data-swatch_type="color"]  .vi-wpvs-option-wrap {*/
+         /*       transition: 0.6s all !important;*/
+         /*   }*/
+
+         /*div[data-swatch_type="color"]  .vi-wpvs-option-wrap-default {*/
+         /*       padding: 2px !important;*/
+         /*       border: 1px solid rgba(255, 255, 255, 0.5) !important;*/
+         /*       background: rgba(255, 255, 255, 0.5) !important;*/
+         /*   }*/
+
+         /*div[data-swatch_type="color"]  .vi-wpvs-option-wrap-hover,*/
+         /*div[data-swatch_type="color"]  .vi-wpvs-option-wrap-selected {*/
+         /*       border: 0 !important;*/
+         /*       padding: 0 !important;*/
+         /*       border: 0 !important;*/
+         /*   }*/
+
+         /*!*asdasd*!*/
+         /*div[data-swatch_type='color'] .vi-wpvs-option-wrap {*/
+         /*    transition: 0.6s all !important;*/
+         /*}*/
+
+         /*div[data-swatch_type='color'] .vi-wpvs-option-wrap-default {*/
+         /*    padding: 2px !important;*/
+         /*    border: 1px solid rgba(255, 255, 255, 0.5) !important;*/
+         /*    background: rgba(255, 255, 255, 0.5) !important;*/
+         /*}*/
+
+         /* div[data-swatch_type='color'] .vi-wpvs-variation-wrap.vi-wpvs-variation-wrap-vi_wpvs_image_design .vi-wpvs-option-wrap.vi-wpvs-option-wrap-selected {*/
+         /*    transform: scale(140%) !important;*/
+         /*    border: none !important;*/
+         /*    box-shadow: none !important;*/
+         /*}*/
+
+         /* div[data-swatch_type='color'] .vi-wpvs-variation-wrap.vi-wpvs-variation-wrap-vi_wpvs_image_design .vi-wpvs-option-wrap.vi-wpvs-option-wrap-default {*/
+         /*    border: none !important;*/
+         /*    box-shadow: none !important;*/
+         /*}*/
 
 
-         div[data-swatch_type="color"]  .vi-wpvs-option-wrap {
-                transition: 0.6s all !important;
-            }
-
-         div[data-swatch_type="color"]  .vi-wpvs-option-wrap-default {
-                padding: 2px !important;
-                border: 1px solid rgba(255, 255, 255, 0.5) !important;
-                background: rgba(255, 255, 255, 0.5) !important;
-            }
-
-         div[data-swatch_type="color"]  .vi-wpvs-option-wrap-hover,
-         div[data-swatch_type="color"]  .vi-wpvs-option-wrap-selected {
-                border: 0 !important;
-                padding: 0 !important;
-                border: 0 !important;
-            }
-
-         /*asdasd*/
-         div[data-swatch_type='color'] .vi-wpvs-option-wrap {
-             transition: 0.6s all !important;
-         }
-
-         div[data-swatch_type='color'] .vi-wpvs-option-wrap-default {
-             padding: 2px !important;
-             border: 1px solid rgba(255, 255, 255, 0.5) !important;
-             background: rgba(255, 255, 255, 0.5) !important;
-         }
-
-          div[data-swatch_type='color'] .vi-wpvs-variation-wrap.vi-wpvs-variation-wrap-vi_wpvs_image_design .vi-wpvs-option-wrap.vi-wpvs-option-wrap-selected {
-             transform: scale(140%) !important;
-             border: none !important;
-             box-shadow: none !important;
-         }
-
-          div[data-swatch_type='color'] .vi-wpvs-variation-wrap.vi-wpvs-variation-wrap-vi_wpvs_image_design .vi-wpvs-option-wrap.vi-wpvs-option-wrap-default {
-             border: none !important;
-             box-shadow: none !important;
-         }
-
-
-         div[data-swatch_type='color'] .vi-wpvs-option-wrap-hover,
-         div[data-swatch_type='color'] .vi-wpvs-option-wrap-selected {
-             border: 0 !important;
-             padding: 0 !important;
-             border: 0 !important;
-         }
+         /*div[data-swatch_type='color'] .vi-wpvs-option-wrap-hover,*/
+         /*div[data-swatch_type='color'] .vi-wpvs-option-wrap-selected {*/
+         /*    border: 0 !important;*/
+         /*    padding: 0 !important;*/
+         /*    border: 0 !important;*/
+         /*}*/
 
          .vi-wpvs-variation-wrap.vi-wpvs-variation-wrap-vi_wpvs_image_design.vi-wpvs-variation-wrap-button.vi-wpvs-variation-wrap-taxonomy{
             align-items: center !important;
@@ -164,16 +205,6 @@ $cats = get_terms( array(
 						<?php wc_get_template_part( 'content', 'single-product' ); ?>
 
 					<?php endwhile; // end of the loop. ?>
-
-					<?php
-					/**
-					 * woocommerce_after_main_content hook.
-					 *
-					 * @hooked woocommerce_output_content_wrapper_end - 10 (outputs closing divs for the content)
-					 */
-					//do_action( 'woocommerce_after_main_content' );
-					?>
-
 				</div>
 			</div>
 		</div>
@@ -320,23 +351,4 @@ $cats = get_terms( array(
 
         </div>
     </section>
-<script>
-    function redirectFilteredShop(filterType, that){
-        let filter_id = that.val();
-        let shop_url = '<?php echo get_permalink( wc_get_page_id( 'shop' ) ) ?>';
-        let filltered_page = shop_url + '?filters='+ filterType +'[' + filter_id + ']';
-        window.location.replace(filltered_page);
-    }
-
-    $('div[data-taxonomy="product_cat"] input[type="checkbox"]').click(function (event) {
-        event.preventDefault();
-        redirectFilteredShop('product_cat',$(this));
-    });
-    $('div[data-taxonomy="item"] input[type="checkbox"]').click(function (event) {
-        event.preventDefault();
-        redirectFilteredShop('item',$(this));
-    });
-</script>
 <?php get_footer();
-
-/* Omit closing PHP tag at the end of PHP files to avoid "headers already sent" issues. */

@@ -122,4 +122,18 @@ $team_list = get_terms( array(
         </div>
 
 </section>
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+
+        jQuery('body').removeClass('loading');
+        jQuery('#menu-toggle').on('click', function () {
+            jQuery('body').toggleClass('menu-opened');
+            fullpage_api.setAllowScrolling(false);
+        });
+        jQuery('#header-nav .close, #overlay').on('click', function () {
+            jQuery('body').removeClass('menu-opened');
+            fullpage_api.setAllowScrolling(true);
+        });
+    });
+</script>
 <?php get_footer(); ?>

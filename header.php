@@ -12,23 +12,24 @@ $pf = get_fields();
 	<meta name="theme-color" content="#12A0FF">
 	<meta name="apple-mobile-web-app-status-bar-style" content="#12A0FF">
 	<link rel="profile" href="http://gmpg.org/xfn/11">
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.10/jquery.mask.js"></script>
 
 
 	<?php wp_head(); ?>
+    <script>
+        function linkToHomepage(target,home) {
+            console.log(target,home);
+            window.open(home + '?target=' + target);
+
+
+        }
+    </script>
 </head>
 
-<?php if(get_field('is_service',get_the_ID()) == true){
-    $light_theme = '-light';
-    ?>
-<body <?php body_class(['light-theme loading']); ?>>
-<?php } else {
-    $light_theme =  '';
-    ?>
+<?php if(is_home() or is_front_page()){ ?>
 <body <?php body_class(['loading']); ?>>
+<?php } else{ ?>
+<body <?php body_class(); ?>>
 <?php } ?>
-<body <?php body_class(['loading']); ?>>
 <div id="overlay"></div>
 <nav id="header-nav">
 	<div class="for-height">
@@ -47,9 +48,15 @@ $pf = get_fields();
 			<div class="menu-holder">
 				<nav id="menu">
 					<ul class="main-menu">
+                        <?php if(is_front_page()){ ?>
 						<?php foreach($of['menu'] as $menu):?>
+                            <?php if( !empty($menu['slug']) && $menu['slug'] !== '0'){ ?>
+                                    <li class='menu-item'>
+                                         <a href='<?php echo get_site_url() . $menu['slug']; ?>'><?php echo $menu['name'] ?></a>
+                                    </li>
+                            <?php } else { ?>
 							<li class="menu-item">
-								<a href="javascript:;" data-section="<?php echo $menu['section']; ?>" class="section-menu-item"><?php echo $menu['name']?></a>
+								<a href="javascript:;"  data-section="<?php echo $menu['section']; ?>" class="section-menu-item"><?php echo $menu['name']?></a>
                                 <?php $services_list = new WP_Query(array('post_type' =>  'services', 'posts_per_page'    =>  -1, 'order'=>'ASC')); ?>
 								<?php if($menu['enable_services_menu']):?>
 									<ul class="services-menu">
@@ -61,7 +68,37 @@ $pf = get_fields();
 									</ul>
 								<?php endif;?>
 							</li>
+                            <?php } ?>
 						<?php endforeach;?>
+                        <?php } else { ?>
+	                        <?php foreach ( $of['menu'] as $menu ): ?>
+						<?php if ( empty( $menu['slug'] ) && $menu['slug'] !== '0' ) { ?>
+                            <li class='menu-item'>
+                                <a href='<?php echo get_site_url() . $menu['slug']; ?>'
+                                   class='section-menu-item'><?php echo $menu['name'] ?></a>
+                            </li>
+						<?php } else { ?>
+                                <li class="menu-item">
+                                    <a onclick='linkToHomepage("<?php echo $menu['target']; ?>","<?php echo get_site_url(); ?>");' href="javascript:void(0);" data-target="<?php echo $menu['target']; ?>"
+                                       data-section="<?php echo $menu['section']; ?>"
+                                       class="section-menu-item"><?php echo $menu['name'] ?></a>
+			                        <?php $services_list = new WP_Query( array( 'post_type'      => 'services',
+			                                                                    'posts_per_page' => - 1,
+			                                                                    'order'          => 'ASC'
+			                        ) ); ?>
+			                        <?php if ( $menu['enable_services_menu'] ): ?>
+                                        <ul class="services-menu">
+					                        <?php foreach ( $services_list->posts as $service ): ?>
+                                                <li>
+                                                    <a href="<?php echo get_permalink( $service->ID ); ?>"><?php echo $service->post_title; ?></a>
+                                                </li>
+					                        <?php endforeach; ?>
+                                        </ul>
+			                        <?php endif; ?>
+                                </li>
+		                        <?php } ?>
+	                        <?php endforeach; ?>
+                        <?php } ?>
                         <li class="menu-item">
                            <a href="https://jtrain.brainstormtech.pro/concierge/" >Concierge</a>
                         </li>
@@ -126,6 +163,7 @@ $pf = get_fields();
 				</a>
 			</div>
             <div class="menu-items">
+                <?php include get_theme_file_path('/woocommerce/cart-button.php'); ?>
 	            <?php
 	            wp_nav_menu( array(
 		            'theme_location'  => 'top-menu',

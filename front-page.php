@@ -47,7 +47,7 @@ get_header();
 
 </section>
 <?php if($pf['about_section_name']):?>
-<section class="about-section-name fullpage-section text-animation anim" id="about">
+<section class="about-section-name fullpage-section text-animation anim" id="about" >
 	<div class="rectangle fp-bg">
 		<div class="inner-rect flex fdc fjb">
 			<div class="arrow1"></div>

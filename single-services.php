@@ -72,6 +72,9 @@ $team_list = wp_get_post_terms($obj_id, 'team', array('fields' => 'all') );
                     <div class='swiper-pagination'></div>
                     <div class='swiper-button-next swiper-button-blue'></div>
                 </div>
+                <div class="info" style="display:none">
+                    <p>Tap the image to zoom</p>
+                </div>
             </div>
 		<?php } ?>
 		<div class='rectangle'>
@@ -123,7 +126,7 @@ $team_list = wp_get_post_terms($obj_id, 'team', array('fields' => 'all') );
 
 	</section>
 
-    <section class='contact-section contact-services'>
+    <section class='contact-section contact-services' id="contact">
         <div class='section-wrp flex pr2'>
             <div class='inner-holder flex '>
                 <div class='left-col flex fjc'>
@@ -247,13 +250,6 @@ $team_list = wp_get_post_terms($obj_id, 'team', array('fields' => 'all') );
 </div>
 
 <script>
-    jQuery('#menu-toggle').on('click', function () {
-        jQuery('body').toggleClass('menu-opened');
-        fullpage_api.setAllowScrolling(false);
-    });
-    jQuery('#header-nav .close, #overlay').on('click', function () {
-        jQuery('body').removeClass('menu-opened');
-        fullpage_api.setAllowScrolling(true);
-    });
+
 </script>
 <?php get_footer(); ?>

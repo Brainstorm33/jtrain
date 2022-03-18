@@ -60,11 +60,13 @@ a {
   text-decoration: none;
 }
 
-input, textarea, button {
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  -ms-progress-appearance: unset;
-  border-radius: 0;
+body:not(.woocommerce-page){
+  input, textarea, button {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    -ms-progress-appearance: unset;
+    border-radius: 0;
+  }
 }
 
 em {

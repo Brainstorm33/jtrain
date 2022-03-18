@@ -1,3 +1,5 @@
+
+<h1>Checkout</h1>
 <?php
 /**
  * Checkout Form

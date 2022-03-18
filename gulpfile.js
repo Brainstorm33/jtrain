@@ -24,13 +24,13 @@ gulp.task('sass', function()
 
 gulp.task('js', function () {
      return gulp.src(['./js/*.js'])
-         .pipe(concat('main.js'))
-         .pipe(minify({
-             ext: {
-                 min: '.min.js' // Set the file extension for minified files to just .js
-             },
-             noSource: true // Don’t output a copy of the source file
-         }))
+         // .pipe(concat('main.js'))
+         // .pipe(minify({
+         //     ext: {
+         //         min: '.min.js' // Set the file extension for minified files to just .js
+         //     },
+         //     noSource: true // Don’t output a copy of the source file
+         // }))
         .pipe(gulp.dest('./dist/js'));
 })
 

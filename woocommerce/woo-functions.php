@@ -10,8 +10,26 @@ remove_action('woocommerce_single_product_summary', 'woocommerce_template_single
 remove_action('woocommerce_single_product_summary', 'woocommerce_template_single_excerpt', 40);
 remove_action('woocommerce_sidebar', 'woocommerce_get_sidebar', 10);
 remove_action( 'woocommerce_after_single_product_summary', 'woocommerce_output_related_products', 20 );
-function custom_remove_all_quantity_fields( $return, $product ) {return true;}
-add_filter( 'woocommerce_is_sold_individually','custom_remove_all_quantity_fields', 10, 2 );
+remove_action( 'woocommerce_before_checkout_form', 'woocommerce_checkout_coupon_form', 10 );
+add_filter( 'woocommerce_cart_item_thumbnail', '__return_false' );
+add_filter('woocommerce_reset_variations_link', '__return_empty_string');
+
+
+
+add_filter( 'woocommerce_enable_order_notes_field', '__return_false' );
+// hide coupon field on checkout page
+function webroom_hide_coupon_field_on_woocommerce_checkout( $enabled ) {
+
+	if ( is_checkout() ) {
+		$enabled = false;
+	}
+
+	return $enabled;
+}
+add_filter( 'woocommerce_coupons_enabled', 'webroom_hide_coupon_field_on_woocommerce_checkout' );
+
+//function custom_remove_all_quantity_fields( $return, $product ) {return true;}
+//add_filter( 'woocommerce_is_sold_individually','custom_remove_all_quantity_fields', 10, 2 );
 
 
 add_filter( 'woocommerce_product_tabs', 'wc_remove_description_tab', 11, 1 );
@@ -76,6 +94,13 @@ function gender_custom_taxonomy_Item() {
 
 add_action( 'init', 'gender_custom_taxonomy_item', 0 );
 
+
+function sv_remove_cart_notice_on_checkout() {
+	if ( function_exists( 'wc_cart_notices' ) ) {
+		remove_action( 'woocommerce_before_checkout_form', array( wc_cart_notices(), 'add_cart_notice' ) );
+	}
+}
+add_action( 'init', 'sv_remove_cart_notice_on_checkout' );
 
 
 
